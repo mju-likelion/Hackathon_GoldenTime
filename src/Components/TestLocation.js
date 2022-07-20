@@ -5,6 +5,36 @@ import React, { useEffect, useState } from "react";
 const TestLocation = () => {
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
+  const [myposx, setMyposx] = useState(0);
+  const [myposy, setMyposy] = useState(0);
+  useEffect(() => {
+    function getLocation() {
+      if (navigator.geolocation) {
+        // GPS를 지원하면
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            console.log(
+              position.coords.latitude + " " + position.coords.longitude
+            );
+            setMyposx(position.coords.longitude);
+            setMyposy(position.coords.latitude);
+          },
+          function (error) {
+            console.error(error);
+          },
+          {
+            enableHighAccuracy: true,
+            maximumAge: 0,
+            timeout: Infinity,
+          }
+        );
+      } else {
+        alert("GPS를 지원하지 않습니다");
+      }
+    }
+    getLocation();
+  }, []);
+
   useEffect(() => {
     const geocoder = new kakao.maps.services.Geocoder();
 
@@ -23,11 +53,11 @@ const TestLocation = () => {
     console.log(x); // 디버깅용
     console.log(y); // 디버깅용
     const options = {
-      center: new kakao.maps.LatLng(y, x),
+      center: new kakao.maps.LatLng(myposy, myposx),
       level: 3,
     };
     const map = new kakao.maps.Map(container, options);
-    const markerPosition = new kakao.maps.LatLng(y, x);
+    const markerPosition = new kakao.maps.LatLng(myposy, myposx);
     const marker = new kakao.maps.Marker({
       position: markerPosition,
     });
