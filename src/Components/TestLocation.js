@@ -7,6 +7,7 @@ const TestLocation = () => {
   const [y, setY] = useState(0);
   const [myposx, setMyposx] = useState(0);
   const [myposy, setMyposy] = useState(0);
+  //mypos는 사용자 좌표를 받는건데, 이것도 마찬가지로 y,x 순서로 렌더링 되어야함
   useEffect(() => {
     function getLocation() {
       if (navigator.geolocation) {
@@ -53,11 +54,11 @@ const TestLocation = () => {
     console.log(x); // 디버깅용
     console.log(y); // 디버깅용
     const options = {
-      center: new kakao.maps.LatLng(myposy, myposx),
+      center: new kakao.maps.LatLng(y,x),
       level: 3,
     };
     const map = new kakao.maps.Map(container, options);
-    const markerPosition = new kakao.maps.LatLng(myposy, myposx);
+    const markerPosition = new kakao.maps.LatLng(y,x);
     const marker = new kakao.maps.Marker({
       position: markerPosition,
     });
