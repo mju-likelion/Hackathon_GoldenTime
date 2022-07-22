@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import styled from "styled-components";
 import TestLocation from "./Components/TestLocation";
@@ -25,10 +24,7 @@ function App() {
     <div className="App">
       <SelectBoxWrapper>
         <DropBox options={OPTIONS} defaultValue="banana" />
-        <DropBox options={OPTIONS} defaultValue="banana" />
-        <DropBox options={OPTIONS} defaultValue="orange" />
       </SelectBoxWrapper>
-      <TestLocation />
     </div>
   );
 }

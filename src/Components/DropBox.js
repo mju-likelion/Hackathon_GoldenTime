@@ -26,13 +26,14 @@ export const Select = styled.select`
 const DropBox = (props) => {
   const handleChange = (e) => {
     // event handler
-    console.log(e.target.value); // 이걸로 나중에 useState 관리해서 서버랑 통신
+    //console.log(e.target.value); // 이걸로 나중에 useState 관리해서 서버랑 통신
+    const temp = e.target.value;
   };
   //일단 코드 지저분한건 나중에 (구조분해)
   return (
     <SelectBoxWrapper>
       <Select onChange={handleChange}>
-        {props.options.map((option) => (
+        {props.options?.map((option) => (
           <option
             key={option.value}
             value={option.value}
