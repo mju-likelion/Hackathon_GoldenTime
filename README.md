@@ -14,4 +14,5 @@
 
 크러쉬 방지를 위해서 동일 컴포넌트 작업할 땐, 다른 라인에서 작업하고 깃허브에서 함부로 수정 ㄴㄴ   
 
-++ 카카오 맵 렌더링 일단 구현, apikey 따로 뺌(dotenv,axios)
+++ 카카오 맵 렌더링 일단 구현, apikey 따로 뺌(dotenv,axios)  
+++ 드롭바 구현 하는중, (node-sass,react-transition,group) 근데 사실 좌표값 따왔는데 굳이 입력창이 필요한가 
