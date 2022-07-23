@@ -9,8 +9,10 @@ const Info = () => {
       <div className="InfoList">
         <p className="InfoText">경기도 용인시 처인구 남동</p>
         <p className="InfoText">xxx응급실</p>
-        <button className="InfoButton">ㅎㅇ</button>
-        <button className="InfoButton">ㅎㅇ</button>
+        <div className="buttonlist">
+          <button className="InfoButton">자세히</button>
+          <button className="InfoButton">전화연결</button>
+        </div>
       </div>
     </div>
   );

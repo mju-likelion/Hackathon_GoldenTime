@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { AiFillAlert } from "react-icons/ai";
 import DropBox from "../Components/DropBox";
 import Title from "../Components/Title";
@@ -8,34 +7,40 @@ import TestLocation from "../Components/TestLocation";
 import { si, seoul, gangnam, Symptom } from "../Datas/locationData.js";
 import "../Styles/AiFillAlert.scss";
 import "../Styles/DropBoxWrapper.scss";
+import "../Styles/LastButton.scss";
 
 const MainPages = () => {
-  const [next, setNext] = useState([]);
-  const [final, setFinal] = useState([]);
-  const [send, setSend] = useState(""); //이거 나중에 제출 버튼 들어가면 그 때 한번에 문자열 합쳐서 서버로 전송
-  const [symptom, setSymptom] = useState("");
-  const [loading, setLoading] = useState(false); //이건 나중에 서버에서 데이터 받아오면 그 때 지도 렌더링
-  const [choice, setChoice] = useState("선택한 값 ->");
+  const [next, setNext] = useState([]); //구 설정 값
+  const [final, setFinal] = useState([]); //동 설정 값
+  const [send, setSend] = useState(""); //서버에 보낼 문장
+  const [symptom, setSymptom] = useState(""); //증상 설정 값
+  const [loading, setLoading] = useState(false); //렌더링 로딩 조건
+  const [choice, setChoice] = useState("선택한 값 ->"); //내가 선택한 것 관리 string
 
-  const handleChange = (e) => {
-    // 이걸로 나중에 useState 관리해서 서버랑 통신
-    if (e.target.value === "서울특별시") {
-      setNext(seoul); //이거 로직 개구린데 ...?
-    }
-    if (e.target.value === "강남구") {
-      setFinal(gangnam);
-    }
-    setSend(send.concat(e.target.value));
-    setChoice(choice.concat(`${e.target.value},`));
-    setSymptom(e.target.value);
-  };
+  const handleChange = useCallback(
+    (e) => {
+      // 이걸로 나중에 useState 관리해서 서버랑 통신
+      const eventValue = e.target.value;
 
-  const onSubmit = () => {
+      if (eventValue === "서울특별시") {
+        setNext(seoul); //이대로 하려면 이거 서울에 있는 구 죄다 if로 때려 박아야 되는데 이거 로직 개구린데 ...?
+      }
+      if (eventValue === "강남구") {
+        setFinal(gangnam);
+      }
+      setChoice("선택한 값 ->");
+      setSend(send.concat(eventValue));
+      setChoice(choice.concat(`${eventValue} `)); //띄어쓰기로 구별
+      setSymptom(eventValue);
+    },
+    [send, choice]
+  );
+
+  const onSubmit = useCallback(() => {
     setSend(send.concat(`,${symptom}`));
-    console.log(send);
     setSend("");
     setLoading(true);
-  };
+  }, [send]);
 
   return (
     <div className="app">
@@ -49,9 +54,10 @@ const MainPages = () => {
       <div className="DropBoxWrapper">
         <DropBox options={Symptom} handleChange={handleChange} />
       </div>
-      {loading && <div>{choice}</div>}
+      {loading && <div className="chocieText">{choice}</div>}
       {loading && <Info />}
       {loading && <TestLocation />}
+      {loading && <button className="LastButton">다른 곳 더보기</button>}
     </div>
   );
 };

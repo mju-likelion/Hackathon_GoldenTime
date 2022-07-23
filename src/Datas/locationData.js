@@ -1,4 +1,4 @@
-export const si = [{ value: "시를 골라주세요" }, { value: "서울특별시" }]; // 데이터들 일단 여기다가 놓는데 나중에 따로 뺄겁니당
+export const si = [{ value: "시를 골라주세요" }, { value: "서울특별시" }];
 
 export const seoul = [{ value: "구를 골라주세요" }, { value: "강남구" }];
 

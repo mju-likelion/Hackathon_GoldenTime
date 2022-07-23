@@ -1,10 +1,7 @@
 import React from "react";
 import "../Styles/Select.scss";
-import "../Styles/DropBoxWrapper.scss";
 
 const DropBox = ({ options, handleChange }) => {
-  //일단 코드 지저분한건 나중에 (구조분해)
-
   return (
     <select className="Select" onChange={handleChange}>
       {options?.map((option) => (
