@@ -13,7 +13,7 @@ const DropBox = ({ options, handleChange }) => {
           value={option.value}
           //이거 왜 갑자기 디폴트 안먹지, 일단 첫번째 항목으로 막아는 놓음
         >
-          {option.name}
+          {option.value}
         </option>
       ))}
     </select>

@@ -1,0 +1,27 @@
+.Info {
+    //혹시 모르니까 일단 파일 분리
+    width: 80%;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    margin-top: 40px;
+    border: 2px solid;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px;
+}
+
+.InfoList{
+    margin-top: 20%;
+    width: 100%;
+    height: 100%;
+}
+
+.InfoText {
+    width: 100%;
+}
+
+.InfoButton{
+   
+    width: 50%;
+}

@@ -1,6 +1,7 @@
 /*global kakao*/
 /*이거 없으면 컴파일 오류 나옴*/
 import React, { useEffect, useState } from "react";
+import "../Styles/TestLocation.scss";
 
 const TestLocation = () => {
   const [x, setX] = useState(0);
@@ -54,11 +55,11 @@ const TestLocation = () => {
     console.log(x); // 디버깅용
     console.log(y); // 디버깅용
     const options = {
-      center: new kakao.maps.LatLng(y,x),
+      center: new kakao.maps.LatLng(y, x),
       level: 3,
     };
     const map = new kakao.maps.Map(container, options);
-    const markerPosition = new kakao.maps.LatLng(y,x);
+    const markerPosition = new kakao.maps.LatLng(y, x);
     const marker = new kakao.maps.Marker({
       position: markerPosition,
     });
@@ -72,15 +73,7 @@ const TestLocation = () => {
 
   return (
     <div>
-      <div
-        id="map"
-        style={{
-          width: "500px",
-          height: "400px",
-          margin: "auto",
-          marginTop: "300px",
-        }}
-      ></div>
+      <div id="map" className="TestLocation"></div>
     </div>
   );
 };
