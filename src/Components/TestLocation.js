@@ -69,12 +69,8 @@ const TestLocation = () => {
       // 마커 위에 이벤트 추가
       console.log("클릭이 되었어염"); //이거 나중에 서버에서 데이터 받을 때 상세페이지로 넘어가는 역할 (프론트에선 일단 라우팅만 하면될듯)
     });
-  }); //이거 빈배열로 하면 렌더링 할 때만 이뤄져서 이건 나중에 수정
+  }, [x, y]); //이거 빈배열로 하면 렌더링 할 때만 이뤄져서 이건 나중에 수정
 
-  return (
-    <div>
-      <div id="map" className="TestLocation"></div>
-    </div>
-  );
+  return <div id="map" className="TestLocation"></div>;
 };
 export default TestLocation;

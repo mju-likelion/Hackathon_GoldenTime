@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { AiFillAlert } from "react-icons/ai";
 import DropBox from "../Components/DropBox";
 import Title from "../Components/Title";
@@ -8,6 +9,7 @@ import { si, seoul, gangnam, Symptom } from "../Datas/locationData.js";
 import "../Styles/AiFillAlert.scss";
 import "../Styles/DropBoxWrapper.scss";
 import "../Styles/LastButton.scss";
+import "../Styles/Link.scss";
 
 const MainPages = () => {
   const [next, setNext] = useState([]); //구 설정 값
@@ -57,7 +59,9 @@ const MainPages = () => {
       {loading && <div className="chocieText">{choice}</div>}
       {loading && <Info />}
       {loading && <TestLocation />}
-      {loading && <button className="LastButton">다른 곳 더보기</button>}
+      <Link to="/list" className="Link">
+        {loading && <button className="LastButton">다른 곳 더보기</button>}
+      </Link>
     </div>
   );
 };
