@@ -1,0 +1,29 @@
+.Select {
+    margin: 0;
+    min-width: 0;
+    display: flex;
+    //width: 20%;
+    flex: 1;
+    padding: 8px 8px;
+    font-size: small;
+    line-height: inherit;
+    border: 1px solid;
+    border-radius: 4px;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:focus {
+        border-color: red;
+    }
+}
+
+.chocieText{
+    width: 80%;
+    margin:30px auto 0 auto;
+    display: flex;
+    font-size: large;
+    font-weight: bold;
+    justify-content: flex-start;
+    align-self: center;
+}
