@@ -1,8 +1,10 @@
 /*global kakao*/
 import React, { useEffect, useState, useCallback } from "react";
+import axios from "axios";
 import "../Styles/TestLocation.scss";
 
 const TestLocation = () => {
+  const API_KEY = process.env.REACT_APP_ROUTE_API_KEY;
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
 
@@ -22,20 +24,27 @@ const TestLocation = () => {
 
   //mypos는 사용자 좌표를 받는건데, 이것도 마찬가지로 y,x 순서로 렌더링 되어야함
 
+  const sendData = {
+    origin: "127.18564851207637 ,37.225337463214764",
+    destination: "127.211398448325,37.2315421543466",
+    priority: "DISTANCE",
+  };
   const option = {
     method: "GET",
-    url: "/v2.0/user/me",
+    url: "https://apis-navi.kakaomobility.com/v1/directions?",
     headers: {
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: `KakaoAK ${API_KEY}`,
     },
-    params: sendData, //object
+    params: sendData,
   };
 
-  axios(option).then(({ data }) => {
-    const accountListFromRequest = data.res_list;
-    setaccountList(accountListFromRequest);
-    //setaccountList()
-    //
+  useEffect(() => {
+    axios(option).then(({ data }) => {
+      console.log(data.routes[0].sections[0].distance); //거리
+      console.log(data.routes[0].sections[0].duration); //자동차 기준 시간(초)
+      console.log(data.routes[0].sections[0].guides);
+      //이거 나중에 리스트로 관리 및 최적화(지금 렌더링 될 때 3번 실행함)
+    });
   });
 
   useEffect(() => {
