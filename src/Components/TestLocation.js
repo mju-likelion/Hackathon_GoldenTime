@@ -35,6 +35,7 @@ const TestLocation = () => {
     const accountListFromRequest = data.res_list;
     setaccountList(accountListFromRequest);
     //setaccountList()
+    //
   });
 
   useEffect(() => {
