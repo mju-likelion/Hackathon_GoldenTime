@@ -42,7 +42,7 @@ const TestLocation = () => {
     axios(option).then(({ data }) => {
       console.log(data.routes[0].sections[0].distance); //거리
       console.log(data.routes[0].sections[0].duration); //자동차 기준 시간(초)
-      console.log(data.routes[0].sections[0].guides);
+      console.log(data.routes[0].sections[0].guides); //경로 표시에 필요한 안내 리스트
       //이거 나중에 리스트로 관리 및 최적화(지금 렌더링 될 때 3번 실행함)
     });
   });
