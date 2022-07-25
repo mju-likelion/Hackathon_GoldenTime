@@ -22,6 +22,21 @@ const TestLocation = () => {
 
   //mypos는 사용자 좌표를 받는건데, 이것도 마찬가지로 y,x 순서로 렌더링 되어야함
 
+  const option = {
+    method: "GET",
+    url: "/v2.0/user/me",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+    params: sendData, //object
+  };
+
+  axios(option).then(({ data }) => {
+    const accountListFromRequest = data.res_list;
+    setaccountList(accountListFromRequest);
+    //setaccountList()
+  });
+
   useEffect(() => {
     const getLocation = () => {
       if (navigator.geolocation) {
