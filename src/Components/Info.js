@@ -12,6 +12,7 @@ const Info = () => {
   const phoneCall = (phoneNumber) => {
     window.location.href = "tel:" + "01057803574";
     //이거 나중에 props로 데이터 받으면 전화 번호 여기다가 넣어야됨
+    //그냥 a 태그로 하는게 속도는 더 빠름
   };
 
   return (
