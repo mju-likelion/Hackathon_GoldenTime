@@ -38,6 +38,8 @@ const TestLocation = () => {
 
         const markerPoints = [
           //마커를 여러개 찍을 건데, 우선은 사용자의 위치와 도착 병원의 좌표
+
+          //여기서 서버에 받는 좌표들 값을 for문으로 돌려야됨
           {
             latlng: new kakao.maps.LatLng(
               37.225337463214764,
@@ -77,7 +79,7 @@ const TestLocation = () => {
         ];
         const sendData = {
           origin: "127.18564851207637 ,37.225337463214764", //이거 나중에 현재 위치 좌표값으로 변경
-          destination: "127.211398448325,37.2315421543466", //이거 나중에 목적지 좌표값으로 변경
+          destination: " 127.11792548115211 ,37.273720205663", //이거 나중에 목적지 좌표값으로 변경
           priority: "DISTANCE", // 거리를 기준으로 경로 추천
         };
 
@@ -124,7 +126,7 @@ const TestLocation = () => {
 
           const polyline = new kakao.maps.Polyline({
             path: polylinePath, //좌표배열
-            strokeColor: "#FF7F00", //선의 색 빨강
+            strokeColor: "#a63641", //선의 색 빨강
             strokeOpacity: 0.8, //선의 투명도
             strokeWeight: 4, //선의 두께
             map: map, //만들어 놓은 지도
