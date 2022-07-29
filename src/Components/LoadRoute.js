@@ -9,10 +9,9 @@ import { coordinates, details } from "../Atoms/atoms";
 
 const LoadRoute = () => {
   const API_KEY = process.env.REACT_APP_ROUTE_API_KEY;
-  const [routex, setRoutex] = useState([]); //두 위치에 따른 경로를 위한 좌표들의 배열
-  const [routey, setRoutey] = useState([]); //이거 근데 굳이 스테이트 써야되나
+  const routex = []; //두 위치에 따른 경로를 위한 좌표들의 배열
+  const routey = []; //이거 근데 굳이 스테이트 써야되나
   const coordinateValue = useRecoilValue(coordinates);
-  const detailsValue = useRecoilValue(details); // 해당 atom의 값
   const setDetail = useSetRecoilState(details);
   const { myposx, myposy, x, y } = coordinateValue;
   console.log(myposx);
@@ -26,7 +25,21 @@ const LoadRoute = () => {
 
     const map = new kakao.maps.Map(container, mapOption); //그래서 맵을 만들고
 
-    console.log(coordinateValue);
+    const markerPoints = [
+      {
+        latlng: new kakao.maps.LatLng(myposy, myposx), //이거 굳이 현재 좌표를 보여줄 필요가 있을까 ? 이거 나중에 의논 해보고
+      },
+      {
+        latlng: new kakao.maps.LatLng(y, x),
+      },
+    ];
+
+    for (let i = 0; i < markerPoints.length; i++) {
+      let marker = new kakao.maps.Marker({
+        map: map,
+        position: markerPoints[i].latlng,
+      });
+    }
 
     const polylinePath = [
       //경로 추천할 때 사용할 배열, 첫 시작은 사용자 위치 ,  마지막 위치는 응급실 위치
@@ -78,7 +91,6 @@ const LoadRoute = () => {
         map: map, //만들어 놓은 지도
       });
       polyline.setMap(map);
-      console.log(detailsValue);
     });
   }, []);
 
