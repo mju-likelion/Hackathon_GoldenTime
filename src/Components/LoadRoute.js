@@ -1,20 +1,21 @@
 /*global kakao*/
 import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue,useSetRecoilState } from "recoil";
 import "../Styles/TestLocation.scss";
-import { test } from "../Atoms/test";
+import { test,test2 } from "../Atoms/test";
 
 //받아야 되는 값들이 병원 상세 정보, 사용자 위치 -> 서버랑 통신할 때 recoil로 관리 하면 될 듯
 
 const LoadRoute = () => {
   const API_KEY = process.env.REACT_APP_ROUTE_API_KEY;
   const [routex, setRoutex] = useState([]); //두 위치에 따른 경로를 위한 좌표들의 배열
-  const [routey, setRoutey] = useState([]);
-  const recoilValue = useRecoilValue(test); // 해당 atom의 값
+  const [routey, setRoutey] = useState([]); //이거 근데 굳이 스테이트 써야되나
+  const recoilValue = useRecoilValue(test); 
+  const recoilValue2 = useRecoilValue(test2);// 해당 atom의 값
+  const setValue = useSetRecoilState(test2);
   const { myposx, myposy, x, y } = recoilValue;
   console.log(myposx);
-
   useEffect(() => {
     const container = document.getElementById("map");
 
@@ -48,15 +49,18 @@ const LoadRoute = () => {
 
     axios(option).then(({ data }) => {
       const navigateInfo = data.routes[0].sections[0]; //네비 게이션 도로명 리스트
+      const distance = navigateInfo.distance; //예상 거리
+      const duration = navigateInfo.duration; //예상 시간(초)
+      setValue({distance:distance,time:duration});
       for (let section = 0; section < navigateInfo.roads.length; section++) {
         const navigatePoint = navigateInfo.roads[section].vertexes; //도로명에 따른 경로 좌표
         for (let vertexe = 0; vertexe < navigatePoint.length; vertexe++) {
           if (vertexe % 2 === 0) {
             const tempy = navigatePoint[vertexe];
-            setRoutey(routey.push(tempy));
+            routey.push(tempy);
           } else {
             const tempx = navigatePoint[vertexe];
-            setRoutex(routex.push(tempx));
+            routex.push(tempx);
           }
         }
       }
@@ -66,8 +70,7 @@ const LoadRoute = () => {
         polylinePath.push(routeObject);
       }
 
-      const distance = navigateInfo.distance; //예상 거리
-      const duration = navigateInfo.duration; //예상 시간(초)
+
 
       const polyline = new kakao.maps.Polyline({
         path: polylinePath, //좌표배열
@@ -77,8 +80,9 @@ const LoadRoute = () => {
         map: map, //만들어 놓은 지도
       });
       polyline.setMap(map);
+      console.log(recoilValue2)
     });
-  }, []);
+  },[]);
 
   return <div id="map" className="TestLocation" />;
 };

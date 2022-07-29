@@ -49,10 +49,10 @@ const TestLocation = () => {
 
           const container = document.getElementById("map");
           console.log(y, x);
-          console.log(myposy, myposx);
+          console.log(myposy, myposx); //싱크 맞추기 위해서 우선 의존성에 x myposx다 넣긴 했는데 .. 나중에 공부가 더 필요함 
 
           const mapOption = {
-            center: new kakao.maps.LatLng(myposy, myposx), //이것도 나중에 gps 값으로(y,x);
+            center: new kakao.maps.LatLng(myposy, myposx), 
             level: 5,
           };
 
@@ -104,7 +104,7 @@ const TestLocation = () => {
       myposy: myposy,
       myposx: myposx,
     });
-  }, [x]);
+  }, [x,myposx]);
 
   return <div id="map" className="TestLocation"></div>;
 };
