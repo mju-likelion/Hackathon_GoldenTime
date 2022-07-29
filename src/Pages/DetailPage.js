@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 import Title from "../Components/Title";
 import DetailInfo from "../Components/DetailInfo";
 import LoadRoute from "../Components/LoadRoute";
-import { test } from "../Atoms/test";
+import { coordinates } from "../Atoms/atoms";
 import "../Styles/Info.scss";
 
 const DetailPage = () => {
@@ -12,7 +12,7 @@ const DetailPage = () => {
   const goFirstAid = () => {
     navigate("/aid");
   };
-  const recoilValue = useRecoilValue(test); // 해당 atom의 값
+  const recoilValue = useRecoilValue(coordinates); // 해당 atom의 값
   console.log(recoilValue);
 
   return (

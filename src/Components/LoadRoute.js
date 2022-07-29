@@ -1,9 +1,9 @@
 /*global kakao*/
 import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
-import { useRecoilValue,useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import "../Styles/TestLocation.scss";
-import { test,test2 } from "../Atoms/test";
+import { coordinates, details } from "../Atoms/atoms";
 
 //받아야 되는 값들이 병원 상세 정보, 사용자 위치 -> 서버랑 통신할 때 recoil로 관리 하면 될 듯
 
@@ -11,10 +11,10 @@ const LoadRoute = () => {
   const API_KEY = process.env.REACT_APP_ROUTE_API_KEY;
   const [routex, setRoutex] = useState([]); //두 위치에 따른 경로를 위한 좌표들의 배열
   const [routey, setRoutey] = useState([]); //이거 근데 굳이 스테이트 써야되나
-  const recoilValue = useRecoilValue(test); 
-  const recoilValue2 = useRecoilValue(test2);// 해당 atom의 값
-  const setValue = useSetRecoilState(test2);
-  const { myposx, myposy, x, y } = recoilValue;
+  const coordinateValue = useRecoilValue(coordinates);
+  const detailsValue = useRecoilValue(details); // 해당 atom의 값
+  const setDetail = useSetRecoilState(details);
+  const { myposx, myposy, x, y } = coordinateValue;
   console.log(myposx);
   useEffect(() => {
     const container = document.getElementById("map");
@@ -26,7 +26,7 @@ const LoadRoute = () => {
 
     const map = new kakao.maps.Map(container, mapOption); //그래서 맵을 만들고
 
-    console.log(recoilValue);
+    console.log(coordinateValue);
 
     const polylinePath = [
       //경로 추천할 때 사용할 배열, 첫 시작은 사용자 위치 ,  마지막 위치는 응급실 위치
@@ -51,7 +51,7 @@ const LoadRoute = () => {
       const navigateInfo = data.routes[0].sections[0]; //네비 게이션 도로명 리스트
       const distance = navigateInfo.distance; //예상 거리
       const duration = navigateInfo.duration; //예상 시간(초)
-      setValue({distance:distance,time:duration});
+      setDetail({ distance: distance, time: duration });
       for (let section = 0; section < navigateInfo.roads.length; section++) {
         const navigatePoint = navigateInfo.roads[section].vertexes; //도로명에 따른 경로 좌표
         for (let vertexe = 0; vertexe < navigatePoint.length; vertexe++) {
@@ -70,8 +70,6 @@ const LoadRoute = () => {
         polylinePath.push(routeObject);
       }
 
-
-
       const polyline = new kakao.maps.Polyline({
         path: polylinePath, //좌표배열
         strokeColor: "#ff0000", //선의 색 빨강
@@ -80,9 +78,9 @@ const LoadRoute = () => {
         map: map, //만들어 놓은 지도
       });
       polyline.setMap(map);
-      console.log(recoilValue2)
+      console.log(detailsValue);
     });
-  },[]);
+  }, []);
 
   return <div id="map" className="TestLocation" />;
 };
