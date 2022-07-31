@@ -14,6 +14,8 @@ const TestLocation = () => {
 
   const setCoordinates = useSetRecoilState(coordinates); // 업데이트 함수만 가져올때
 
+  
+
   //API에 따라 다르지만, 해당 좌표는 y,x로 들어가야함
 
   //순서 맞추기 작업 1. 일단 무조건 로컬 좌표 부터 2. 그 다음에 카카오 좌표

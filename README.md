@@ -42,6 +42,7 @@ src
 │   └── atoms.js
 │
 ├── Components
+│   ├── AidInfo.js
 │   ├── Detailinfo.js
 │   ├── DropBox.js
 │   ├── Info.js

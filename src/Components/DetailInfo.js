@@ -24,7 +24,6 @@ const DetailInfo = () => {
           최단 거리는 {distance} m이며, 예상 소요시간은 {minute}분 {second}초
           입니다.
         </p>
-        <div className="buttonlist"></div>
       </div>
     </div>
   );

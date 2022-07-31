@@ -23,7 +23,7 @@ const DetailPage = () => {
       <p className="chocieText">추천 최단 경로</p>
       <LoadRoute />
       <button className="LastButton" onClick={goFirstAid}>
-        다른 곳 더보기
+        응급 조치 정보
       </button>
     </div>
   );
