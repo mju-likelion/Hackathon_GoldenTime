@@ -31,7 +31,7 @@ const MainPages = () => {
 
     const option = {
       method: "GET",
-      url: "?",
+      url: "http://15.164.159.158:3000/api/hospital/inquire?",
       params: sendData,
     };
 
@@ -70,7 +70,7 @@ const MainPages = () => {
 
   const onSubmit = useCallback(() => {
 
-    //getData(); test
+    getData();
     setLoading(true); // 여기서 전송 보내고 받으면 loading을 true로
     console.log(`${address},${symptom}`);
     // setSetting(true);
