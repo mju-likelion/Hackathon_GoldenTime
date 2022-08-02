@@ -12,7 +12,7 @@ import "../Styles/DropBoxWrapper.scss";
 import "../Styles/LastButton.scss";
 import "../Styles/Link.scss";
 
-//이거 나중에 임포트 정리하기, 이렇게 할거면 의미가 없음 
+//이거 나중에 임포트 정리하기, 이렇게 할거면 의미가 없음
 
 const MainPages = () => {
   const [next, setNext] = useState([]); //구 설정 값
@@ -22,11 +22,10 @@ const MainPages = () => {
   //const [setting, setSetting] = useState(false); //클릭 완료 조건
   const [choice, setChoice] = useState("선택한 값 ->"); //내가 선택한 것 관리 string
 
-
-  const getData = useCallback(()=>{
+  const getData = useCallback(() => {
     const sendData = {
-      address: address, 
-      symptom: symptom, 
+      address: address,
+      symptom: symptom,
     };
 
     const option = {
@@ -35,11 +34,10 @@ const MainPages = () => {
       params: sendData,
     };
 
-    axios(option).then(({data}) => {
+    axios(option).then(({ data }) => {
       console.log(data); // 통신 테스트
-    })
-  
-  },[address,symptom])
+    });
+  }, [address, symptom]);
 
   const handleAddress = useCallback(
     (e) => {
@@ -69,9 +67,8 @@ const MainPages = () => {
   );
 
   const onSubmit = useCallback(() => {
-
     getData();
-    setLoading(true); // 여기서 전송 보내고 받으면 loading을 true로
+    setLoading(true); // 여기서 전송 보내고 받으면 loading을 true로 -> 이거 나중에 axios로 넘기고
     console.log(`${address},${symptom}`);
     // setSetting(true);
   }, [address, symptom]);
