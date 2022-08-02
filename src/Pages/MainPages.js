@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import { AiFillAlert } from "react-icons/ai";
 import axios from "axios";
@@ -35,7 +35,6 @@ const MainPages = () => {
     };
 
     axios(option).then(({ data }) => {
-      console.log(data); // 통신 테스트
       setData(data);
       setLoading(true);
     });
@@ -43,18 +42,14 @@ const MainPages = () => {
 
   const handleAddress = useCallback(
     (e) => {
-      // 이걸로 나중에 useState 관리해서 서버랑 통신
-
       const eventValue = e.target.value;
       if (eventValue === "서울특별시") {
         setNext(seoul);
         setChoice(choice.concat(`${eventValue} `));
         return; //서버랑 통신할 때 시는 필요 x
       }
-      //setChoice("선택한 값 ->");
       setAddress(eventValue);
       setChoice(choice.concat(`${eventValue} `)); //띄어쓰기로 구별
-      //setSymptom(eventValue);
     },
     [address, choice]
   );
@@ -70,9 +65,7 @@ const MainPages = () => {
 
   const onSubmit = useCallback(() => {
     getData();
-    // 여기서 전송 보내고 받으면 loading을 true로 -> 이거 나중에 axios로 넘기고
     console.log(`${address},${symptom}`);
-    // setSetting(true);
   }, [address, symptom]);
 
   return (
