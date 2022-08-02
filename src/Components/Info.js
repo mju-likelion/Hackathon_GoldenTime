@@ -11,15 +11,12 @@ const Info = () => {
     navigate("/detail");
   };
   const InfoValue = useRecoilState(infoData);
-  console.log(InfoValue);
-  const phoneCall = (phoneNumber) => {
-    window.location.href = "tel:" + "01057803574";
-    //이거 나중에 props로 데이터 받으면 전화 번호 여기다가 넣어야됨
-    //그냥 a 태그로 하는게 속도는 더 빠름
+  const { address, callNumber, title } = InfoValue[0];
+  const phoneCall = () => {
+    window.location.href = "tel:" + callNumber;
+    //그냥 a 태그로 하는게 속도는 더 빠름 ++ 크롬 로그인 양쪽에서,,, 전화번호로 로그인 해야되네
   };
 
-  const { address, callNumber, title, x, y } = InfoValue[0];
-  console.log(address);
   return (
     <div className="Info">
       <img className="hospitalImage" alt="hospitalImage" src={image} />
@@ -31,7 +28,7 @@ const Info = () => {
             자세히
           </button>
           <button className="InfoButton" onClick={phoneCall}>
-            {callNumber}
+            전화 걸기
           </button>
         </div>
       </div>

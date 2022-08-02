@@ -4,7 +4,8 @@ import { useRecoilValue } from "recoil";
 import Title from "../Components/Title";
 import DetailInfo from "../Components/DetailInfo";
 import LoadRoute from "../Components/LoadRoute";
-import { coordinates } from "../Atoms/atoms";
+import Select from "../Components/Select";
+import { coordinates, selectData } from "../Atoms/atoms";
 import "../Styles/Info.scss";
 
 const DetailPage = () => {
@@ -12,13 +13,18 @@ const DetailPage = () => {
   const goFirstAid = () => {
     navigate("/aid");
   };
-  const recoilValue = useRecoilValue(coordinates); // 해당 atom의 값
-  console.log(recoilValue);
+  //const recoilValue = useRecoilValue(coordinates); // 해당 atom의 값 -> 내가 이거 여기 왜 넣었지 ?
+  const { address, symptom } = useRecoilValue(selectData);
+  //console.log(recoilValue);
 
   return (
     <div>
       <Title name="응급실 찾기" />
       <p className="chocieText">검색 결과</p>
+      <div className="mainSelectList">
+        {address && <Select select={address} />}
+        {symptom && <Select select={symptom} />}
+      </div>
       <DetailInfo />
       <p className="chocieText">추천 최단 경로</p>
       <LoadRoute />
