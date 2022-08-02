@@ -2,12 +2,14 @@ import React, { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import { AiFillAlert } from "react-icons/ai";
 import axios from "axios";
+import { useSetRecoilState } from "recoil";
 import DropBox from "../Components/DropBox";
 import Title from "../Components/Title";
 import Info from "../Components/Info";
 import TestLocation from "../Components/TestLocation";
 import Select from "../Components/Select";
 import { city, seoul, Symptom } from "../Datas/locationData.js";
+import { selectData } from "../Atoms/atoms";
 import "../Styles/AiFillAlert.scss";
 import "../Styles/DropBoxWrapper.scss";
 import "../Styles/LastButton.scss";
@@ -23,6 +25,7 @@ const MainPages = () => {
   const [loading, setLoading] = useState(false); //렌더링 로딩 조건
   const [data, setData] = useState([]); //axios 통신 데이터
   const [choice, setChoice] = useState("선택한 값 ->"); //내가 선택한 것 관리 string -> 이건 나중에 삭제
+  const setSelectData = useSetRecoilState(selectData);
 
   const getData = useCallback(() => {
     const sendData = {
@@ -69,6 +72,10 @@ const MainPages = () => {
   const onSubmit = useCallback(() => {
     getData();
     console.log(`${address},${symptom}`);
+    setSelectData({
+      address: address,
+      symptom: symptom,
+    });
   }, [address, symptom]);
 
   return (
