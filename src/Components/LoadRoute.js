@@ -3,7 +3,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import "../Styles/TestLocation.scss";
-import { coordinates, details } from "../Atoms/atoms";
+import { coordinates, details, infoData } from "../Atoms/atoms";
 
 //받아야 되는 값들이 병원 상세 정보, 사용자 위치 -> 서버랑 통신할 때 recoil로 관리 하면 될 듯
 
@@ -11,7 +11,7 @@ const LoadRoute = () => {
   const API_KEY = process.env.REACT_APP_ROUTE_API_KEY;
   const routex = []; //두 위치에 따른 경로를 위한 좌표들의 배열
   const routey = []; //이거 근데 굳이 스테이트 써야되나
-  const coordinateValue = useRecoilValue(coordinates);
+  const coordinateValue = useRecoilValue(infoData);
   const setDetail = useSetRecoilState(details);
   const { myposx, myposy, x, y } = coordinateValue;
   console.log(myposx);
