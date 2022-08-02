@@ -6,11 +6,13 @@ import DropBox from "../Components/DropBox";
 import Title from "../Components/Title";
 import Info from "../Components/Info";
 import TestLocation from "../Components/TestLocation";
+import Select from "../Components/Select";
 import { city, seoul, Symptom } from "../Datas/locationData.js";
 import "../Styles/AiFillAlert.scss";
 import "../Styles/DropBoxWrapper.scss";
 import "../Styles/LastButton.scss";
 import "../Styles/Link.scss";
+import "../Styles/Select.scss";
 
 //이거 나중에 임포트 정리하기, 이렇게 할거면 의미가 없음
 
@@ -20,7 +22,7 @@ const MainPages = () => {
   const [symptom, setSymptom] = useState(""); //증상 설정 값
   const [loading, setLoading] = useState(false); //렌더링 로딩 조건
   const [data, setData] = useState([]); //axios 통신 데이터
-  const [choice, setChoice] = useState("선택한 값 ->"); //내가 선택한 것 관리 string
+  const [choice, setChoice] = useState("선택한 값 ->"); //내가 선택한 것 관리 string -> 이건 나중에 삭제
 
   const getData = useCallback(() => {
     const sendData = {
@@ -37,6 +39,7 @@ const MainPages = () => {
     axios(option).then(({ data }) => {
       setData(data);
       setLoading(true);
+      console.log(data);
     });
   }, [address, symptom]);
 
@@ -76,10 +79,16 @@ const MainPages = () => {
         <DropBox options={next} handleChange={handleAddress} />
         <AiFillAlert className="AiFillAlert" onClick={onSubmit} />
       </div>
+
       <div className="DropBoxWrapper">
         <DropBox options={Symptom} handleChange={handleSymptom} />
       </div>
-      {loading && <div className="chocieText">{choice}</div>}
+
+      <div className="mainSelectList">
+        {address && <Select select={address} />}
+        {symptom && <Select select={symptom} />}
+      </div>
+
       {loading && <Info />}
       {loading && <TestLocation data={data} />}
       <Link to="/list" className="Link">

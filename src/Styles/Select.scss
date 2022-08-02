@@ -27,3 +27,24 @@
     justify-content: flex-start;
     align-self: center;
 }
+
+
+.mainSelectList{
+    margin-top:10px;
+    display: flex;
+    justify-content: flex-start;
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.mainSelect{   
+        background-color: #FFB471;
+        border-radius: 10px;
+        border-color: #FFB471;
+        width:  15%;
+        color: white;
+        height: 25px; 
+        text-align: center;
+        margin-right: 10px;
+}

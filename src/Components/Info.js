@@ -11,7 +11,7 @@ const Info = () => {
     navigate("/detail");
   };
   const InfoValue = useRecoilState(infoData);
-  console.log(InfoValue);
+  //console.log(InfoValue);
   const phoneCall = (phoneNumber) => {
     window.location.href = "tel:" + "01057803574";
     //이거 나중에 props로 데이터 받으면 전화 번호 여기다가 넣어야됨
@@ -19,7 +19,7 @@ const Info = () => {
   };
 
   const { address, callNumber, title, x, y } = InfoValue[0];
-  console.log(address);
+  // console.log(address);
   return (
     <div className="Info">
       <img className="hospitalImage" alt="hospitalImage" src={image} />
