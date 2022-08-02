@@ -12,7 +12,7 @@ const TestLocation = ({ data }) => {
   const [myposx, setMyposx] = useState(0); //사용자 위치에 해당하는 x,y
   const [myposy, setMyposy] = useState(0);
 
-  const setCoordinates = useSetRecoilState(coordinates); // 업데이트 함수만 가져올때
+  const setCoordinates = useSetRecoilState(coordinates); //마커 이벤트가 형제 컴포넌트 이므로 전역 상태 관리를 통한 데이터 유지
   const setInfoValue = useSetRecoilState(infoData);
 
   useEffect(() => {
@@ -44,7 +44,6 @@ const TestLocation = ({ data }) => {
       setY(data[0].wgs84Lat);
 
       const container = document.getElementById("map");
-      //console.log(myposy, myposx);
 
       const mapOption = {
         center: new kakao.maps.LatLng(y, x),
@@ -86,7 +85,7 @@ const TestLocation = ({ data }) => {
       for (let i = 0; i < markerPoints.length; i++) {
         let marker = new kakao.maps.Marker({
           map: map, // 마커를 표시할 지도
-          position: markerPoints[i].latlng, // 마커를 표시할 위치, 이름은 표시 x
+          position: markerPoints[i].latlng, //마커 표시 위치
           image: markerImage,
         });
         kakao.maps.event.addListener(marker, "click", function () {
@@ -95,7 +94,6 @@ const TestLocation = ({ data }) => {
           //상세페이지로 넘어가는 역할
         });
 
-        //테스트 코드
         const iwRemoveable = true;
         const infowindow = new kakao.maps.InfoWindow({
           content: markerPoints[i].content,
@@ -112,7 +110,7 @@ const TestLocation = ({ data }) => {
     });
     getLocation();
     getCoordinate();
-  }, [x, myposx]);
+  }, [x, myposx]); //싱크를 맞추기 위한 의존성 부여
 
   return <div id="map" className="TestLocation"></div>;
 };
