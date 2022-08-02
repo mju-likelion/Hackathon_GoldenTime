@@ -47,12 +47,13 @@ src
 │   ├── DropBox.js
 │   ├── Info.js
 │   ├── LoadRoute.js
+│   ├── Select.js
 │   ├── TestLocation.js -> 추후 컴포넌트명 수정 계획 중 입니다. 
 │   └── Title.js
 ├── Datas
 │   ├── image.jpg
-│   ├── marker.png
-│   └── locationData.js
+│   ├── locationData.js
+│   └── marker.png
 ├── Pages
 │   ├── DetailPage.js
 │   ├── FirstAidPage.js
