@@ -24,8 +24,13 @@ const MainPages = () => {
   const [symptom, setSymptom] = useState(""); //증상 설정 값
   const [loading, setLoading] = useState(false); //렌더링 로딩 조건
   const [data, setData] = useState([]); //axios 통신 데이터
-  const [choice, setChoice] = useState("선택한 값 ->"); //내가 선택한 것 관리 string -> 이건 나중에 삭제
   const setSelectData = useSetRecoilState(selectData);
+
+  const dummy = {
+    dutyAddr: "",
+    dutyName: "",
+    dutyTel3: "", // 형식 맞추기 위한 더미 객체
+  };
 
   const getData = useCallback(() => {
     const sendData = {
@@ -51,27 +56,21 @@ const MainPages = () => {
       const eventValue = e.target.value;
       if (eventValue === "서울특별시") {
         setNext(seoul);
-        setChoice(choice.concat(`${eventValue} `));
         return; //서버랑 통신할 때 시는 필요 x
       }
       setAddress(eventValue);
-      setChoice(choice.concat(`${eventValue} `)); //띄어쓰기로 구별
     },
-    [address, choice]
+    [address]
   );
 
-  const handleSymptom = useCallback(
-    (e) => {
-      const eventValue = e.target.value;
-      setChoice(choice.concat(`${eventValue} `)); //띄어쓰기로 구별
-      setSymptom(eventValue);
-    },
-    [choice]
-  );
+  const handleSymptom = useCallback((e) => {
+    const eventValue = e.target.value;
+    setSymptom(eventValue);
+  });
 
   const onSubmit = useCallback(() => {
     getData();
-    console.log(`${address},${symptom}`);
+    console.log(`${address},${symptom}`); //이것도 나중에 삭제
     setSelectData({
       address: address,
       symptom: symptom,
@@ -96,9 +95,9 @@ const MainPages = () => {
         {symptom && <Select select={symptom} />}
       </div>
 
-      {loading && <Info />}
+      {loading && <Info props={dummy} />}
       {loading && <TestLocation data={data} />}
-      <Link to="/list" className="Link">
+      <Link to="/list" state={data} className="Link">
         {loading && <button className="LastButton">다른 곳 더보기</button>}
       </Link>
     </div>

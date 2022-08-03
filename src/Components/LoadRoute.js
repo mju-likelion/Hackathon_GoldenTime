@@ -14,7 +14,7 @@ const LoadRoute = () => {
   const coordinateValue = useRecoilValue(infoData);
   const setDetail = useSetRecoilState(details);
   const { myposx, myposy, x, y } = coordinateValue;
-  console.log(myposx);
+  console.log(coordinateValue);
   if (myposx == undefined) {
     alert("잘못된 경로입니다");
     window.location.replace("/"); //일단 데이터 없으면 새로고침

@@ -13,9 +13,7 @@ const DetailPage = () => {
   const goFirstAid = () => {
     navigate("/aid");
   };
-  //const recoilValue = useRecoilValue(coordinates); // 해당 atom의 값 -> 내가 이거 여기 왜 넣었지 ?
   const { address, symptom } = useRecoilValue(selectData);
-  //console.log(recoilValue);
 
   return (
     <div>
