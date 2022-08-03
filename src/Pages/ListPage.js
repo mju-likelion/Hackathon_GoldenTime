@@ -11,8 +11,6 @@ const ListPage = () => {
   const data = useLocation();
   const dataList = data.state;
   const { address, symptom } = useRecoilValue(selectData);
-  console.log(dataList); //  테스트용
-
   return (
     <div>
       <Title name="응급실 리스트" />

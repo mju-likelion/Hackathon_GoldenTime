@@ -16,8 +16,8 @@ const LoadRoute = () => {
   const { myposx, myposy, x, y } = coordinateValue;
   console.log(coordinateValue);
   if (myposx == undefined) {
-    // alert("잘못된 경로입니다");
-    // window.location.replace("/"); //일단 데이터 없으면 새로고침
+    alert("잘못된 경로입니다");
+    window.location.replace("/"); //일단 데이터 없으면 새로고침
   }
   useEffect(() => {
     const container = document.getElementById("map");
