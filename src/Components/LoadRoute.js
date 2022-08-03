@@ -22,7 +22,7 @@ const LoadRoute = () => {
 
   if(myposx === 0 || x === 0){
     alert("좌표를 계산하고 있습니다. 재시도 부탁드립니다.")
-    window.location.replace("/"); //클릭이 너무 빨라서 좌표 계산 안될 경우
+    window.location.replace("/"); //클릭이 너무 빨라서 좌표 계산 안될 경우(기기마다 좌표 계산 속도가 다르므로 예외 처리)
   }
   useEffect(() => {
     const container = document.getElementById("map");
