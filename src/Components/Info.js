@@ -1,19 +1,33 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
-import { infoData } from "../Atoms/atoms";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { infoData, coordinates } from "../Atoms/atoms";
 import "../Styles/Info.scss";
 import image from "../Datas/image.jpg";
 
-const Info = () => {
+const Info = ({ props }) => {
+  console.log(props);
+  const InfoValue = useRecoilState(infoData);
+  const coordinatesData = useRecoilState(coordinates);
+  const setInfoValue = useSetRecoilState(infoData);
+  const { myposy, myposx } = coordinatesData;
+  const { address, callNumber, title, y, x } = InfoValue[0];
+  const { dutyAddr, dutyName, dutyTel3, wgs84Lat, wgs84Lon } = props;
   const navigate = useNavigate();
   const goDetail = () => {
+    // setInfoValue({
+    //   address: dutyAddr || address,
+    //   title: dutyName || title,
+    //   callNumber: dutyTel3 || callNumber,
+    //   myposx: myposx,
+    //   myposy: myposy,
+    //   y: wgs84Lat || y,
+    //   x: wgs84Lon || x,
+    // });
     navigate("/detail");
   };
-  const InfoValue = useRecoilState(infoData);
-  const { address, callNumber, title } = InfoValue[0];
   const phoneCall = () => {
-    window.location.href = "tel:" + callNumber;
+    window.location.href = dutyTel3 ? "tel:" + dutyTel3 : "tel:" + callNumber;
     //그냥 a 태그로 하는게 속도는 더 빠름 ++ 크롬 로그인 양쪽에서,,, 전화번호로 로그인 해야되네
   };
 
@@ -21,8 +35,8 @@ const Info = () => {
     <div className="Info">
       <img className="hospitalImage" alt="hospitalImage" src={image} />
       <div className="InfoList">
-        <p className="InfoText">{address}</p>
-        <p className="InfoText">{title}</p>
+        <p className="InfoText">{dutyAddr || address}</p>
+        <p className="InfoText">{dutyName || title}</p>
         <div className="buttonlist">
           <button className="InfoButton" onClick={goDetail}>
             자세히

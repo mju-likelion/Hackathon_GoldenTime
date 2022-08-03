@@ -27,6 +27,12 @@ const MainPages = () => {
   const [choice, setChoice] = useState("선택한 값 ->"); //내가 선택한 것 관리 string -> 이건 나중에 삭제
   const setSelectData = useSetRecoilState(selectData);
 
+  const dummy = {
+    dutyAddr: "",
+    dutyName: "",
+    dutyTel3: "",
+  };
+
   const getData = useCallback(() => {
     const sendData = {
       address: address,
@@ -96,9 +102,9 @@ const MainPages = () => {
         {symptom && <Select select={symptom} />}
       </div>
 
-      {loading && <Info />}
+      {loading && <Info props={dummy} />}
       {loading && <TestLocation data={data} />}
-      <Link to="/list" className="Link">
+      <Link to="/list" state={data} className="Link">
         {loading && <button className="LastButton">다른 곳 더보기</button>}
       </Link>
     </div>
