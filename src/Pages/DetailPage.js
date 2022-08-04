@@ -10,7 +10,11 @@ import "../Styles/Info.scss";
 
 const DetailPage = () => {
   const navigate = useNavigate();
+  //세빈이가 할 로직 
   const goFirstAid = () => {
+    //첫번째로, axios 관련 설정 먼저해야지? ex) mainpage 
+    //데이터 요청 끝나면(then안에서, 리코일 셋팅을 해야지? -> 리코일 임포트 하고, 너가 셋팅할 리코일 밸류를 임포트해야겠지?) ex) mainpage // atom은 aidinfo로
+    //리코일 셋팅 끝나면 밑에처럼 네비게이션으로 페이지를 옮겨야겠지? -> 이미 이건 코드가 있음. 
     navigate("/aid");
   };
   const { address, symptom } = useRecoilValue(selectData);
