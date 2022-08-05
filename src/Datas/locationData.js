@@ -2,6 +2,7 @@ export const city = [{ value: "시를 골라주세요" }, { value: "서울특별
 
 export const seoul = [
   { value: "구를 골라주세요" },
+  { value: "미입력" },
   { value: "강남구" },
   { value: "강동구" },
   { value: "강북구" },
