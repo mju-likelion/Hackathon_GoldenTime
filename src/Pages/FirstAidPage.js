@@ -7,6 +7,8 @@ import Select from "../Components/Select";
 import { selectData } from "../Atoms/atoms";
 import "../Styles/Info.scss";
 
+
+
 const FirstAidPage = () => {
   const navigate = useNavigate();
   const goMain = () => {
@@ -24,7 +26,7 @@ const FirstAidPage = () => {
       <p className="chocieText">응급 조치</p>
       <AidInfo />
       <p className="chocieText">유의 사항</p>
-      <AidInfo />
+      <Notice />
 
       <button className="LastButton" onClick={goMain}>
         응급실 검색 페이지로 돌아가기

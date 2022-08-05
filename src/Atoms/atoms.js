@@ -18,7 +18,8 @@ export const aidInfos = atom({
   key: "aidinfo",
   default: {
     image: image,
-    info: "이건 어떻게 넘길건지 나중에 이야기 해보자,일단 테스트니까 배열로 받아야 되나 ?",
+    notice: "응급내용",
+    firstaid: "유의사상"
   },
 });
 //응급정보
