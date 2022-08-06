@@ -8,33 +8,40 @@ import Select from "../Components/Select";
 import { aidInfos, coordinates, selectData } from "../Atoms/atoms";
 import "../Styles/Info.scss";
 import axios from "axios";
+import AidInfo from "../Components/AidInfo";
 
 const DetailPage = () => {
   const { address, symptom } = useRecoilValue(selectData);
   const navigate = useNavigate();
-  const [symptomdata,setSymptomdata] = useRecoilState([]);
+  const [data,setData] = useState([]); 
+  const SelectSymtom = useRecoilState(aidInfos)       // axios 로 서버에 받아오는 값
+  
 
+  /*[setAidinfo,Aidinfo] = useRecoilState(aidInfos);
+setAidInfo({notice:data.notice})
+setAidInfo({notice:data.notice,firstaid:data.firstaid})
+생각을 해봤는데 이렇게 해서 리코일 밸류 셋팅 하는 구조인것 같은데... 잘모르겠어..
+*/
 
-  const getsymtomdata = useCallback(() =>{
+  const getsymtomdata = useCallback(() => {
         const sendsymtomdata ={
-          symptom,                  // key value 값이 같으면 key값만 써도 됨 symtom: symtom, 똑같다!!
+          symptom:symptom,                            
         };
 
   const option = {
-      method: "GET",
-      url:"서버에서 받아와야 됨",
-      params: sendsymtomdata,
+      method: "GET",  
+      url:`http://15.164.159.158:3000/api/information/${symptom}`,
+      parmas: sendsymtomdata
     };
 
-  axios(option).then(({symptomdata})=>{
-      setSymptomdata(symptomdata);
-      console.log(symptomdata);
-      });
-    });
-
-  //세빈이가 할 로직 
-  const goFirstAid = useCallback(() => {
+  axios(option).then(({data})=> {  
     navigate("/aid");
+    setData(data);
+    console.log(data);
+   });
+  });
+
+  const goFirstAid = useCallback(() => {
     getsymtomdata();
   },[symptom]);
 
@@ -64,16 +71,3 @@ export default DetailPage;
 
 
 
-
-
-
-
-
-
-
-
-
- 
-    //첫번째로, axios 관련 설정 먼저해야지? ex) mainpage 
-    //데이터 요청 끝나면(then안에서, 리코일 셋팅을 해야지? -> 리코일 임포트 하고, 너가 셋팅할 리코일 밸류를 임포트해야겠지?) ex) mainpage // atom은 aidinfo로
-    //리코일 셋팅 끝나면 밑에처럼 네비게이션으로 페이지를 옮겨야겠지? -> 이미 이건 코드가 있음. 

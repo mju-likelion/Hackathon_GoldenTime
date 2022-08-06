@@ -16,10 +16,10 @@ export const details = atom({
 //거리
 export const aidInfos = atom({
   key: "aidinfo",
-  default: {
-    image: image,
-    notice: "응급내용",
-    firstaid: "유의사상"
+  default: {                    //아직 서버에서 이미지를 못받아서 일단은 배제 시켰습니다.
+    //image:image,
+    notice: "유의 사항",
+    firstaid: "응급 조치"
   },
 });
 //응급정보

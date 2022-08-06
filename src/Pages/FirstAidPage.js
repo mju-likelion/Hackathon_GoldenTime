@@ -5,15 +5,15 @@ import AidInfo from "../Components/AidInfo";
 import Title from "../Components/Title";
 import Select from "../Components/Select";
 import { selectData } from "../Atoms/atoms";
+import Notice from "../Components/Notice";
 import "../Styles/Info.scss";
-
-
 
 const FirstAidPage = () => {
   const navigate = useNavigate();
   const goMain = () => {
     navigate("/");
   };
+  
   const { address, symptom } = useRecoilValue(selectData);
   return (
     <div>

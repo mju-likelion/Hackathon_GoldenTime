@@ -34,5 +34,10 @@ export const Symptom = [
   { value: "천식" },
   { value: "신체절단" },
   { value: "화상" },
+  { value: "뇌출혈" },    //정화님이 증상 추가 하셔서 5개 추가했고 console에 데이터도 잘 나옵니다.
+  { value: "뇌졸중" }, 
+  { value: "손가락절단" },
+  { value: "개에게 물림" }, 
+  { value: "소아 머리손상" },           
   { value: "미입력" },
 ];
