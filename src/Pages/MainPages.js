@@ -24,7 +24,7 @@ const MainPages = () => {
   const [symptom, setSymptom] = useState(""); //증상 설정 값
   const [loading, setLoading] = useState(false); //렌더링 로딩 조건
   const [data, setData] = useState([]); //axios 통신 데이터
-  const [modal,setModal] = useState(false); // 이거 나중에 모달로 변경해서 지도 확대하는거 구현
+  const [modal, setModal] = useState(false); // 이거 나중에 모달로 변경해서 지도 확대하는거 구현
   const setSelectData = useSetRecoilState(selectData);
 
   const dummy = {
@@ -35,9 +35,8 @@ const MainPages = () => {
 
   const closeMap = () => {
     setModal(true);
-    console.log(modal)
-  }
-
+    console.log(modal);
+  };
 
   const getData = useCallback(() => {
     const sendData = {
@@ -90,12 +89,11 @@ const MainPages = () => {
       <div className="DropBoxWrapper">
         <DropBox options={city} handleChange={handleAddress} />
         <DropBox options={next} handleChange={handleAddress} />
+        <DropBox options={Symptom} handleChange={handleSymptom} />
         <AiFillAlert className="AiFillAlert" onClick={onSubmit} />
       </div>
 
-      <div className="DropBoxWrapper">
-        <DropBox options={Symptom} handleChange={handleSymptom} />
-      </div>
+      <p className="chocieText">검색 결과</p>
 
       <div className="mainSelectList">
         {address && <Select select={address} />}
@@ -105,10 +103,13 @@ const MainPages = () => {
       {loading && <Info props={dummy} />}
       {loading && <TestLocation data={data} />}
       <Link to="/list" state={data} className="Link">
-        {loading && <button className="LastButton">다른 곳 더보기</button>}
+        {loading && (
+          <button className="ModalButton" onClick={closeMap}>
+            지도에서 보기
+          </button>
+        )}
       </Link>
-
-      {loading && <button className="LastButton" onClick={closeMap}>테스트 버튼</button>}
+      {loading && <button className="LastButton">다른 곳 더보기</button>}
     </div>
   );
 };
