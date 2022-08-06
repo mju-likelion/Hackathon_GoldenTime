@@ -24,6 +24,7 @@ const MainPages = () => {
   const [symptom, setSymptom] = useState(""); //증상 설정 값
   const [loading, setLoading] = useState(false); //렌더링 로딩 조건
   const [data, setData] = useState([]); //axios 통신 데이터
+  const [modal,setModal] = useState(false); // 이거 나중에 모달로 변경해서 지도 확대하는거 구현
   const setSelectData = useSetRecoilState(selectData);
 
   const dummy = {
@@ -31,6 +32,12 @@ const MainPages = () => {
     dutyName: "",
     dutyTel3: "", // 형식 맞추기 위한 더미 객체
   };
+
+  const closeMap = () => {
+    setModal(true);
+    console.log(modal)
+  }
+
 
   const getData = useCallback(() => {
     const sendData = {
@@ -100,6 +107,8 @@ const MainPages = () => {
       <Link to="/list" state={data} className="Link">
         {loading && <button className="LastButton">다른 곳 더보기</button>}
       </Link>
+
+      {loading && <button className="LastButton" onClick={closeMap}>테스트 버튼</button>}
     </div>
   );
 };
