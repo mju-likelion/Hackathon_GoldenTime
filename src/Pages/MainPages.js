@@ -102,14 +102,14 @@ const MainPages = () => {
 
       {loading && <Info props={dummy} />}
       {loading && <TestLocation data={data} />}
+      {loading && (
+        <button className="ModalButton" onClick={closeMap}>
+          지도에서 보기
+        </button>
+      )}
       <Link to="/list" state={data} className="Link">
-        {loading && (
-          <button className="ModalButton" onClick={closeMap}>
-            지도에서 보기
-          </button>
-        )}
+        {loading && <button className="LastButton">다른 곳 더보기</button>}
       </Link>
-      {loading && <button className="LastButton">다른 곳 더보기</button>}
     </div>
   );
 };
