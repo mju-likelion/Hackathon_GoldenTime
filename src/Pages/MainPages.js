@@ -33,9 +33,11 @@ const MainPages = () => {
     dutyTel3: "", // 형식 맞추기 위한 더미 객체
   };
 
-  const closeMap = () => {
+  const OpenMap = () => {
     setModal(true);
-    console.log(modal);
+  };
+  const CloseMap = () => {
+    setModal(false);
   };
 
   const getData = useCallback(() => {
@@ -69,10 +71,10 @@ const MainPages = () => {
     [address]
   );
 
-  const handleSymptom = useCallback((e) => {
+  const handleSymptom = (e) => {
     const eventValue = e.target.value;
     setSymptom(eventValue);
-  });
+  };
 
   const onSubmit = useCallback(() => {
     getData();
@@ -86,27 +88,36 @@ const MainPages = () => {
   return (
     <div className="app">
       <Title name="응급실 찾기" />
-      <div className="DropBoxWrapper">
-        <DropBox options={city} handleChange={handleAddress} />
-        <DropBox options={next} handleChange={handleAddress} />
-        <DropBox options={Symptom} handleChange={handleSymptom} />
-        <AiFillAlert className="AiFillAlert" onClick={onSubmit} />
-      </div>
-
-      <p className="chocieText">검색 결과</p>
+      {!modal && (
+        <div className="DropBoxWrapper">
+          <DropBox options={city} handleChange={handleAddress} />
+          <DropBox options={next} handleChange={handleAddress} />
+          <DropBox options={Symptom} handleChange={handleSymptom} />
+          <AiFillAlert className="AiFillAlert" onClick={onSubmit} />
+        </div>
+      )}
+      {!modal && <p className="chocieText">검색 결과</p>}
 
       <div className="mainSelectList">
         {address && <Select select={address} />}
         {symptom && <Select select={symptom} />}
       </div>
 
-      {loading && <Info props={dummy} />}
-      {loading && <TestLocation data={data} />}
-      {loading && (
-        <button className="ModalButton" onClick={closeMap}>
+      {loading && !modal && <Info props={dummy} />}
+      {loading && !modal && <TestLocation data={data} name="TestLocation" />}
+      {loading && !modal && (
+        <button className="ModalButton" onClick={OpenMap}>
           지도에서 보기
         </button>
       )}
+
+      {modal && <TestLocation data={data} name="TestLocation1" />}
+      {modal && (
+        <button className="ModalButton" onClick={CloseMap}>
+          화면으로 보기
+        </button>
+      )}
+
       <Link to="/list" state={data} className="Link">
         {loading && <button className="LastButton">다른 곳 더보기</button>}
       </Link>
