@@ -7,7 +7,7 @@ import { coordinates, details, infoData } from "../Atoms/atoms";
 
 //받아야 되는 값들이 병원 상세 정보, 사용자 위치 -> 서버랑 통신할 때 recoil로 관리 하면 될 듯
 
-const LoadRoute = () => {
+const LoadRoute = ({ name }) => {
   const API_KEY = process.env.REACT_APP_ROUTE_API_KEY;
   const routex = []; //두 위치에 따른 경로를 위한 좌표들의 배열
   const routey = []; //이거 근데 굳이 스테이트 써야되나
@@ -20,8 +20,8 @@ const LoadRoute = () => {
     window.location.replace("/"); //일단 데이터 없으면 새로고침
   }
 
-  if(myposx === 0 || x === 0){
-    alert("좌표를 계산하고 있습니다. 재시도 부탁드립니다.")
+  if (myposx === 0 || x === 0) {
+    alert("좌표를 계산하고 있습니다. 재시도 부탁드립니다.");
     window.location.replace("/"); //클릭이 너무 빨라서 좌표 계산 안될 경우(기기마다 좌표 계산 속도가 다르므로 예외 처리)
   }
   useEffect(() => {
@@ -103,7 +103,7 @@ const LoadRoute = () => {
     });
   }, []);
 
-  return <div id="map" className="TestLocation" />;
+  return <div id="map" className={name} />;
 };
 
 export default LoadRoute;
