@@ -42,7 +42,7 @@
 /*애니메이션 관련 코드*/
 .transitions-wrapper {
   position: relative;
-  overflow: hidden;
+  overflow: auto;
   height: calc(var(--vh, 1vh) * 100);
   width: 100vw;
 }
