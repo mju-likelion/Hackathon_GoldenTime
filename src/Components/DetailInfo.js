@@ -3,6 +3,7 @@ import { useRecoilValue } from "recoil";
 import "../Styles/Info.scss";
 import image from "../Datas/image.jpg";
 import { details, infoData } from "../Atoms/atoms";
+import callImage from "../Datas/call.png";
 
 const DetailInfo = () => {
   const detailsValue = useRecoilValue(details);
@@ -18,17 +19,19 @@ const DetailInfo = () => {
   };
 
   return (
-    <div className="Info">
+    <div className="DetailInfo">
       <img className="hospitalImage" alt="hospitalImage" src={image} />
       <div className="InfoList">
-        <p className="InfoText">{address}</p>
         <p className="InfoText">{title}</p>
-        <p className="InfoText" onClick={phoneCall}>
-          Tel : {callNumber}
-        </p>
+        <p className="InfoText">{address}</p>
+        <div className="buttonlist">
+          <button className="InfoButtonCall" onClick={phoneCall}>
+            <img alt="call" src={callImage} />
+          </button>
+        </div>
         <p className="DetailInfoText">
-          최단 거리는 {km}.{m} km이며, 예상 소요시간은 {minute}분 {second}초
-          입니다.
+          최단 거리는 {km}.{m} km입니다. <br />
+          예상 소요시간은 {minute}분 {second}초 입니다.
         </p>
       </div>
     </div>
