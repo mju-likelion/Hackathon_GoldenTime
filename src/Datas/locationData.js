@@ -47,7 +47,7 @@ export const Symptom = [
   { value: "복부 내/외상" },
   { value: "손가락절단" },
   { value: "개에게물림" },
-  //{ value: "신체절단" },
+  { value: "뇌출혈" },
   { value: "응급내시경" },
   { value: "혈액투석" },
   { value: "신장투석" },

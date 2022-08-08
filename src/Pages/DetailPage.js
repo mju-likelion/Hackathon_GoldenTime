@@ -36,19 +36,20 @@ const DetailPage = () => {
     };
 
     axios(option).then(({ data }) => {
+      console.log(data);
       navigate("/aid");
       setData(data);
-      SelectSymtom({
+      SelectSymtom({ 
         notice: data.data[0].notice,
         firstAid: data.data[0].firstAid,
       });
-      console.log(data);
+      
     });
   });
 
   const goFirstAid = useCallback(() => {
     getsymtomdata();
-    SelectSymtom({});
+    //SelectSymtom({}); 기껏 데이터 받아 올 때 셋팅했는데 해당 리코일 값을 다시 초기화 해버리면 의미가 없어용 
   }, [symptom]);
 
   return (

@@ -7,7 +7,7 @@ const Notice = () => {
     const recoilValue = useRecoilValue(aidInfos); 
 
     const {notice} = recoilValue;
-
+    //이제 이미지 연동 ㄱㄱ 
   return (
     <div className="Info">
     <img className="hospitalImage" /* alt="AidInfoImage" src={image}*/  />

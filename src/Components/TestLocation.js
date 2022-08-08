@@ -23,6 +23,7 @@ const TestLocation = ({ data, name }) => {
           function (position) {
             setMyposx(position.coords.longitude);
             setMyposy(position.coords.latitude);
+            getCoordinate(); //그냥 콜백으로 때려버리면 ? 
           },
           function (error) {
             console.error(error);
@@ -116,8 +117,9 @@ const TestLocation = ({ data, name }) => {
     //이거 좌표 계산하는거 싱크 맞춰야됌
 
     getLocation();
-    getCoordinate();
-  }); //애초에 props로 넘기니까, 이제 의존성 부여가 필요 x -> 그럼 useEffect 사용 의미가 있나 ?
+    
+    console.log("완성테스트")
+  },[x,myposx]); //애초에 props로 넘기니까, 이제 의존성 부여가 필요 x -> 그럼 useEffect 사용 의미가 있나 ?
 
   return <div id="map" className={name}></div>;
 };
