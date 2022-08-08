@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import Title from "../Components/Title";
 import DetailInfo from "../Components/DetailInfo";
 import LoadRoute from "../Components/LoadRoute";
@@ -14,14 +14,8 @@ const DetailPage = () => {
   const { address, symptom } = useRecoilValue(selectData);
   const navigate = useNavigate();
   const [data,setData] = useState([]); 
-  const SelectSymtom = useRecoilState(aidInfos)       // axios 로 서버에 받아오는 값
-  
+  const SelectSymtom = useSetRecoilState(aidInfos);     
 
-  /*[setAidinfo,Aidinfo] = useRecoilState(aidInfos);
-setAidInfo({notice:data.notice})
-setAidInfo({notice:data.notice,firstaid:data.firstaid})
-생각을 해봤는데 이렇게 해서 리코일 밸류 셋팅 하는 구조인것 같은데... 잘모르겠어..
-*/
 
   const getsymtomdata = useCallback(() => {
         const sendsymtomdata ={
@@ -37,12 +31,18 @@ setAidInfo({notice:data.notice,firstaid:data.firstaid})
   axios(option).then(({data})=> {  
     navigate("/aid");
     setData(data);
+    SelectSymtom({
+      notice: data.data[0].notice,
+      firstAid: data.data[0].firstAid
+    });
     console.log(data);
    });
   });
 
   const goFirstAid = useCallback(() => {
     getsymtomdata();
+    SelectSymtom({
+    });
   },[symptom]);
 
 
