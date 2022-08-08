@@ -1,20 +1,20 @@
-import React from "react";
-import { useRecoilValue } from "recoil";
-import { aidInfos } from "../Atoms/atoms";
+
+import React from 'react'
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import {aidInfos} from "../Atoms/atoms";
 import "../Styles/Info.scss";
 
 const AidInfo = () => {
-  const recoilValue = useRecoilValue(aidInfos); // 이거 근데 네이밍 밸류가 별로 안좋은 것 같음
-  console.log(recoilValue);
 
-  const { image, info } = recoilValue;
-
+    const recoilValue = useRecoilValue(aidInfos); 
+   
+    const {firstAid} = recoilValue;
   return (
-    <div className="AidInfo">
-      <img className="hospitalImage" alt="AidInfoImage" src={image} />
-      <div className="InfoList">
-        <p className="InfoText">{info}</p>
-      </div>
+    <div className="Info">
+    <img className="hospitalImage" /* alt="AidInfoImage" src={image}*/ />
+    <div className="InfoList">
+      <p className="InfoText">{firstAid}</p>
+
     </div>
   );
 };

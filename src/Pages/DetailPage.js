@@ -1,30 +1,53 @@
-import React, { useState } from "react";
+
+import React, { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import Title from "../Components/Title";
 import DetailInfo from "../Components/DetailInfo";
 import LoadRoute from "../Components/LoadRoute";
 import Select from "../Components/Select";
-import { coordinates, selectData } from "../Atoms/atoms";
+import { aidInfos, coordinates, selectData } from "../Atoms/atoms";
 import "../Styles/Info.scss";
+import axios from "axios";
+import AidInfo from "../Components/AidInfo";
 
 const DetailPage = () => {
-  const [modal, setModal] = useState(false);
+
   const { address, symptom } = useRecoilValue(selectData);
   const navigate = useNavigate();
-  //세빈이가 할 로직
-  const goFirstAid = () => {
-    //첫번째로, axios 관련 설정 먼저해야지? ex) mainpage
-    //데이터 요청 끝나면(then안에서, 리코일 셋팅을 해야지? -> 리코일 임포트 하고, 너가 셋팅할 리코일 밸류를 임포트해야겠지?) ex) mainpage // atom은 aidinfo로
-    //리코일 셋팅 끝나면 밑에처럼 네비게이션으로 페이지를 옮겨야겠지? -> 이미 이건 코드가 있음.
+  const [data,setData] = useState([]); 
+  const SelectSymtom = useSetRecoilState(aidInfos);     
+
+
+  const getsymtomdata = useCallback(() => {
+        const sendsymtomdata ={
+          symptom:symptom,                            
+        };
+
+  const option = {
+      method: "GET",  
+      url:`http://15.164.159.158:3000/api/information/${symptom}`,
+      parmas: sendsymtomdata
+    };
+
+  axios(option).then(({data})=> {  
     navigate("/aid");
-  };
-  const OpenMap = () => {
-    setModal(true);
-  };
-  const CloseMap = () => {
-    setModal(false);
-  };
+    setData(data);
+    SelectSymtom({
+      notice: data.data[0].notice,
+      firstAid: data.data[0].firstAid
+    });
+    console.log(data);
+   });
+  });
+
+  const goFirstAid = useCallback(() => {
+    getsymtomdata();
+    SelectSymtom({
+    });
+  },[symptom]);
+
+
 
   return (
     <div>
@@ -59,3 +82,8 @@ const DetailPage = () => {
 };
 
 export default DetailPage;
+
+
+
+
+

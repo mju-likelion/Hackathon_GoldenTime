@@ -16,9 +16,10 @@ export const details = atom({
 //거리
 export const aidInfos = atom({
   key: "aidinfo",
-  default: {
-    image: image,
-    info: "이건 어떻게 넘길건지 나중에 이야기 해보자,일단 테스트니까 배열로 받아야 되나 ?",
+  default: {                    //아직 서버에서 이미지를 못받아서 일단은 배제 시켰습니다.
+    //image:image,
+    notice: "",
+    firstAid: ""
   },
 });
 //응급정보
