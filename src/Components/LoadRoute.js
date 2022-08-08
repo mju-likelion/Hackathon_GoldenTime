@@ -15,16 +15,16 @@ const LoadRoute = ({ name }) => {
   const setDetail = useSetRecoilState(details);
   const { myposx, myposy, x, y } = coordinateValue;
   console.log(coordinateValue);
- 
+
   useEffect(() => {
     if (myposx == undefined) {
       alert("잘못된 경로입니다");
       window.location.replace("/"); //일단 데이터 없으면 새로고침
     }
-  
+
     if (myposx === 0 || x === 0) {
       alert("좌표를 계산하고 있습니다. 재시도 부탁드립니다.");
-      //window.location.replace("/"); //클릭이 너무 빨라서 좌표 계산 안될 경우(기기마다 좌표 계산 속도가 다르므로 예외 처리)
+      window.location.replace("/"); //클릭이 너무 빨라서 좌표 계산 안될 경우(기기마다 좌표 계산 속도가 다르므로 예외 처리)
     }
     const container = document.getElementById("map");
 
@@ -102,9 +102,9 @@ const LoadRoute = ({ name }) => {
       });
       polyline.setMap(map);
     });
-  }, [myposx,x]);
+  }, [myposx, x]);
 
   return <div id="map" className={name} />;
 };
 
-export default LoadRoute;
+export default React.memo(LoadRoute);

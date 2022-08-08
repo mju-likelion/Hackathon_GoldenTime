@@ -9,7 +9,7 @@ const DetailInfo = () => {
   const detailsValue = useRecoilValue(details);
   const infoValue = useRecoilValue(infoData);
   const { distance, time } = detailsValue;
-  const { address, title, callNumber } = infoValue;
+  const { address, title, callNumber, image } = infoValue;
   const km = parseInt(distance / 1000);
   const m = distance % 1000;
   const minute = parseInt(time / 60);

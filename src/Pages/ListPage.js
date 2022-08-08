@@ -10,6 +10,7 @@ import "../Styles/Info.scss";
 const ListPage = () => {
   const data = useLocation();
   const dataList = data.state;
+  console.log(dataList);
   const { address, symptom } = useRecoilValue(selectData);
   return (
     <div>
@@ -19,7 +20,7 @@ const ListPage = () => {
         {symptom && <Select select={symptom} />}
       </div>
       {dataList?.map((data) => (
-        <Info key={data.dutyAddr} props={data} />
+        <Info key={data.dutyAddr} props={data} url={data.image} />
       ))}
     </div>
   );

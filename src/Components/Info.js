@@ -6,12 +6,13 @@ import "../Styles/Info.scss";
 import image from "../Datas/image.jpg";
 import callImage from "../Datas/call.png";
 
-const Info = ({ props }) => {
+const Info = ({ props, url }) => {
   const InfoValue = useRecoilState(infoData);
   const coordinatesData = useRecoilState(coordinates);
   const setInfoValue = useSetRecoilState(infoData);
   const { myposy, myposx } = coordinatesData[0]; // 사용자 위치 추적 좌표
   const { address, callNumber, title, y, x } = InfoValue[0]; //병원 객체
+  const image = url ? url : InfoValue[0].image; //이미지는 따로 관리해줘야 리스트가 관리됨
   const { dutyAddr, dutyName, dutyTel3, wgs84Lat, wgs84Lon } = props; // 리스트 페이지를 위한 props형태 병원 객체
   const navigate = useNavigate();
   const goDetail = () => {
@@ -23,6 +24,7 @@ const Info = ({ props }) => {
       myposy: myposy,
       y: wgs84Lat || y,
       x: wgs84Lon || x,
+      image: url || image,
     }); //prosp여부에 따른 좌표 전역 상태값 핸들링
     navigate("/detail");
   };

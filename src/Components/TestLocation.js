@@ -14,7 +14,7 @@ const TestLocation = ({ data, name }) => {
 
   const setCoordinates = useSetRecoilState(coordinates); //마커 이벤트가 형제 컴포넌트 이므로 전역 상태 관리를 통한 데이터 유지
   const setInfoValue = useSetRecoilState(infoData);
-
+  console.log("완성테스트");
   useEffect(() => {
     const getLocation = () => {
       if (navigator.geolocation) {
@@ -23,7 +23,7 @@ const TestLocation = ({ data, name }) => {
           function (position) {
             setMyposx(position.coords.longitude);
             setMyposy(position.coords.latitude);
-            getCoordinate(); //그냥 콜백으로 때려버리면 ? 
+            getCoordinate(); //그냥 콜백으로 때려버리면 ?
           },
           function (error) {
             console.error(error);
@@ -57,9 +57,10 @@ const TestLocation = ({ data, name }) => {
         const markerPoints = [];
 
         for (let i = 0; i < data.length; i++) {
-          const { dutyAddr, dutyName, dutyTel3, wgs84Lat, wgs84Lon } = data[i];
+          const { dutyAddr, dutyName, dutyTel3, wgs84Lat, wgs84Lon, image } =
+            data[i];
           markerPoints.push({
-            content: `<div>${dutyName}</div>`, // 이건 하드 코딩이긴한데, 서버랑 통신 열리면 반복문 돌려서 해당 형식 대로 다 리스트에 넣으면 유지 관리 가능
+            content: `<div>${dutyName}</div>`, // 이건 하드 코딩이긴한데, 서버랑 통신 열리면 반복문 돌려서 해당 형식 대로 다 리스트에 넣으면 유지 관리 가능 <image src =${image}/>
             value: {
               myposy: myposy,
               myposx: myposx,
@@ -68,6 +69,7 @@ const TestLocation = ({ data, name }) => {
               address: dutyAddr,
               title: dutyName,
               callNumber: dutyTel3,
+              image: image, //이거 쓸지 안쓸지 나중에 고려
             },
             latlng: new kakao.maps.LatLng(wgs84Lat, wgs84Lon), //이거 굳이 현재 좌표를 보여줄 필요가 있을까 ? 이거 나중에 의논 해보고
           });
@@ -117,9 +119,7 @@ const TestLocation = ({ data, name }) => {
     //이거 좌표 계산하는거 싱크 맞춰야됌
 
     getLocation();
-    
-    console.log("완성테스트")
-  },[x,myposx]); //애초에 props로 넘기니까, 이제 의존성 부여가 필요 x -> 그럼 useEffect 사용 의미가 있나 ?
+  }); //애초에 props로 넘기니까, 이제 의존성 부여가 필요 x -> 그럼 useEffect 사용 의미가 있나 ?
 
   return <div id="map" className={name}></div>;
 };
