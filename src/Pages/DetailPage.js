@@ -1,4 +1,3 @@
-
 import React, { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
@@ -12,42 +11,45 @@ import axios from "axios";
 import AidInfo from "../Components/AidInfo";
 
 const DetailPage = () => {
-
+  const [modal, setModal] = useState(false);
   const { address, symptom } = useRecoilValue(selectData);
   const navigate = useNavigate();
-  const [data,setData] = useState([]); 
-  const SelectSymtom = useSetRecoilState(aidInfos);     
+  const [data, setData] = useState([]);
+  const SelectSymtom = useSetRecoilState(aidInfos);
 
+  const OpenMap = () => {
+    setModal(true);
+  };
+  const CloseMap = () => {
+    setModal(false);
+  };
 
   const getsymtomdata = useCallback(() => {
-        const sendsymtomdata ={
-          symptom:symptom,                            
-        };
-
-  const option = {
-      method: "GET",  
-      url:`http://15.164.159.158:3000/api/information/${symptom}`,
-      parmas: sendsymtomdata
+    const sendsymtomdata = {
+      symptom: symptom,
     };
 
-  axios(option).then(({data})=> {  
-    navigate("/aid");
-    setData(data);
-    SelectSymtom({
-      notice: data.data[0].notice,
-      firstAid: data.data[0].firstAid
+    const option = {
+      method: "GET",
+      url: `http://15.164.159.158:3000/api/information/${symptom}`,
+      parmas: sendsymtomdata,
+    };
+
+    axios(option).then(({ data }) => {
+      navigate("/aid");
+      setData(data);
+      SelectSymtom({
+        notice: data.data[0].notice,
+        firstAid: data.data[0].firstAid,
+      });
+      console.log(data);
     });
-    console.log(data);
-   });
   });
 
   const goFirstAid = useCallback(() => {
     getsymtomdata();
-    SelectSymtom({
-    });
-  },[symptom]);
-
-
+    SelectSymtom({});
+  }, [symptom]);
 
   return (
     <div>
@@ -82,8 +84,3 @@ const DetailPage = () => {
 };
 
 export default DetailPage;
-
-
-
-
-

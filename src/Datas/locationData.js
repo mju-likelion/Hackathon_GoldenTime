@@ -31,22 +31,30 @@ export const seoul = [
 ];
 
 export const Symptom = [
+  // { value: "증상을 골라주세요" },
+
   { value: "증상을 골라주세요" },
+  { value: "천식" },
+  { value: "신체절단" },
+  { value: "화상" },
+  { value: "기타 등등" },
+  //위 값들은 테스트를 위한 목업입니다.
+  { value: "미입력" },
   { value: "수족 마비" },
   { value: "의식장애" },
-  { value: "뇌경색" },  
-  { value: "심근경색" },  
-  { value: "복부 내/외상" },  
-  { value: "손가락절단" },      
-  { value: "개에게물림" }, 
-  { value: "신체절단" },
-  { value: "응급내시경" }, 
+  { value: "뇌경색" },
+  { value: "심근경색" },
+  { value: "복부 내/외상" },
+  { value: "손가락절단" },
+  { value: "개에게물림" },
+  //{ value: "신체절단" },
+  { value: "응급내시경" },
   { value: "혈액투석" },
-  { value: "신장투석" },  
-  { value: "조산" },  
-  { value: "과호흡" },  
-  { value: "소아 머리손상"},
+  { value: "신장투석" },
+  { value: "조산" },
+  { value: "과호흡" },
+  { value: "소아 머리손상" },
   { value: "열성 경련" },
   { value: "소아 알레르기" },
-  { value: "화상" }
+  // { value: "화상" },
 ];

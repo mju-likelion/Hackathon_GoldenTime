@@ -53,6 +53,7 @@ const MainPages = () => {
     };
 
     axios(option).then(({ data }) => {
+      console.log(option.params);
       setData(data);
       setLoading(true);
       console.log(data);
