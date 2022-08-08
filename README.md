@@ -26,7 +26,7 @@ Merge : 합병 및 깃 충돌 해결 커밋 메시지
 
 프레임워크 -> React  
 
-라이브러리 -> react-router, scss, dotenv, recoil, react-icons, axios,  
+라이브러리 -> react-router, scss, dotenv, recoil, react-icons, axios, react-transition-group 
 
 사용 API -> Geo Location, Kakao maps, Kakao mobility  
 

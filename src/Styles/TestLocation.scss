@@ -1,18 +1,27 @@
 .TestLocation {
     width: 80%;
-    height:500px;
+    height:280px;
     margin-left: auto;
     margin-right: auto;
     flex: 1;
-    margin-top: 40px;
-    border: 2px solid;
-    border-radius: 10px;
-    box-shadow: 2px 2px 2px 2px;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+
+.TestLocation1 {
+    width: 100vw;
+    height:75vh;
+    // margin-left: auto;
+    // margin-right: auto;
+    // flex: 1;
+    margin-top: 20px;
+    border-radius: 20px;
 }
 
 .map{
+    //이건 어디서 나오는거지 
     width: 80%;
-    height:500px;
+    height:300px;
     margin-left: auto;
     margin-right: auto;
 }

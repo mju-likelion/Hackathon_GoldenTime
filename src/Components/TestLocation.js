@@ -5,7 +5,7 @@ import "../Styles/TestLocation.scss";
 import { coordinates, infoData } from "../Atoms/atoms";
 import marker from "../Datas/marker.png";
 
-const TestLocation = ({ data }) => {
+const TestLocation = ({ data, name }) => {
   const [x, setX] = useState(0); //목적지에 해당하는 x,y
   const [y, setY] = useState(0);
 
@@ -113,10 +113,12 @@ const TestLocation = ({ data }) => {
       myposy: myposy,
       myposx: myposx,
     });
+    //이거 좌표 계산하는거 싱크 맞춰야됌
+
     getLocation();
     getCoordinate();
   }); //애초에 props로 넘기니까, 이제 의존성 부여가 필요 x -> 그럼 useEffect 사용 의미가 있나 ?
 
-  return <div id="map" className="TestLocation"></div>;
+  return <div id="map" className={name}></div>;
 };
 export default TestLocation;

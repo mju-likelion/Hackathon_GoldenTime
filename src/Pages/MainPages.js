@@ -24,12 +24,20 @@ const MainPages = () => {
   const [symptom, setSymptom] = useState(""); //증상 설정 값
   const [loading, setLoading] = useState(false); //렌더링 로딩 조건
   const [data, setData] = useState([]); //axios 통신 데이터
+  const [modal, setModal] = useState(false); // 이거 나중에 모달로 변경해서 지도 확대하는거 구현
   const setSelectData = useSetRecoilState(selectData);
 
   const dummy = {
     dutyAddr: "",
     dutyName: "",
     dutyTel3: "", // 형식 맞추기 위한 더미 객체
+  };
+
+  const OpenMap = () => {
+    setModal(true);
+  };
+  const CloseMap = () => {
+    setModal(false);
   };
 
   const getData = useCallback(() => {
@@ -63,10 +71,10 @@ const MainPages = () => {
     [address]
   );
 
-  const handleSymptom = useCallback((e) => {
+  const handleSymptom = (e) => {
     const eventValue = e.target.value;
     setSymptom(eventValue);
-  });
+  };
 
   const onSubmit = useCallback(() => {
     getData();
@@ -80,23 +88,36 @@ const MainPages = () => {
   return (
     <div className="app">
       <Title name="응급실 찾기" />
-      <div className="DropBoxWrapper">
-        <DropBox options={city} handleChange={handleAddress} />
-        <DropBox options={next} handleChange={handleAddress} />
-        <AiFillAlert className="AiFillAlert" onClick={onSubmit} />
-      </div>
-
-      <div className="DropBoxWrapper">
-        <DropBox options={Symptom} handleChange={handleSymptom} />
-      </div>
+      {!modal && (
+        <div className="DropBoxWrapper">
+          <DropBox options={city} handleChange={handleAddress} />
+          <DropBox options={next} handleChange={handleAddress} />
+          <DropBox options={Symptom} handleChange={handleSymptom} />
+          <AiFillAlert className="AiFillAlert" onClick={onSubmit} />
+        </div>
+      )}
+      {!modal && <p className="chocieText">검색 결과</p>}
 
       <div className="mainSelectList">
         {address && <Select select={address} />}
         {symptom && <Select select={symptom} />}
       </div>
 
-      {loading && <Info props={dummy} />}
-      {loading && <TestLocation data={data} />}
+      {loading && !modal && <Info props={dummy} />}
+      {loading && !modal && <TestLocation data={data} name="TestLocation" />}
+      {loading && !modal && (
+        <button className="ModalButton" onClick={OpenMap}>
+          지도에서 보기
+        </button>
+      )}
+
+      {modal && <TestLocation data={data} name="TestLocation1" />}
+      {modal && (
+        <button className="ModalButton" onClick={CloseMap}>
+          화면으로 보기
+        </button>
+      )}
+
       <Link to="/list" state={data} className="Link">
         {loading && <button className="LastButton">다른 곳 더보기</button>}
       </Link>

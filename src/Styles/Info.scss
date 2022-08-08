@@ -1,58 +1,106 @@
 .Info {
-    //혹시 모르니까 일단 파일 분리
     width: 80%;
-    height: 500px;
+    height: 200px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    margin-top: 30px;
-    border: 2px solid;
-    border-radius: 10px;
-    box-shadow: 2px 2px 2px 2px;
+    margin-top: 10px;
+    border: 1px solid;
+    border-radius: 20px;
+    border-color: #808080;
 }
 
+.DetailInfo{
+    width: 80%;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    margin-top: 10px;
+    border: 1px solid;
+    border-radius: 20px;
+    border-color: #3385ff;
+}
+.AidInfo{
+    width: 80%;
+    height: 240px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    margin-top: 10px;
+    border: 1px solid;
+    border-radius: 20px;
+    border-color: #3385ff;
+}
 .InfoList{
+    margin-top: 5px;
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
     width: 100%;
-    height: 100%;
-    overflow: scroll;
-    //background-color: green;
+    height: 90%;
+    overflow: auto;
 }
-.DetailInfoList{
-    display: flex;
-    align-items: center;
-    //flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-}
+
+// .DetailInfoList{
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     width: 100%;
+//     height: 100%;
+    
+// }
 
 .InfoText {
-    width: 80%;
-    font-size: large;
+    width: 100%;
+    font-size: 10px;
     font-weight: bold;
- 
+    text-align: center;
+    margin-bottom: 0px;
+}
 
+.InfoTextTitle {
+    width: 60%;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5px;
 }
 .buttonlist{
     display: flex;
+    flex-direction: column;
     margin-top:10px;
     width: 80%; 
+    height: 30%;
+    align-items: center;
     justify-content: space-between;   
 }
 .InfoButton{
-    background-color: #FFB471;
-    border-radius: 10px;
-    border-color: #FFB471;
-    width:  45%;
-    color: white;
+    width:  100%;
+    font-size: small;
+    font-weight:bold;
+    color: #525252;
+    text-align: center;
+    cursor: pointer;
 }
 
+.InfoButtonCall{
+    background-color: #00DA3D;
+    border-radius: 20px;
+    padding: 5px;
+    border-color: white;
+    border: 1px solid;
+    width:  40%;
+    color: white;
+    cursor: pointer;
+}
+
+
 .hospitalImage{
-    width: 60%;
+    width: 40%;
+    border-radius: 20px;
+    padding: 8px;
+   
 }
 
 .Text{
@@ -61,8 +109,10 @@
 }
 
 .DetailInfoText{
+    margin-top: 10px;
     width: 80%;
-    font-size: 24px;
+    font-size: 13px;
     color: red;
     font-weight: bold;
+    text-align: center;
 }

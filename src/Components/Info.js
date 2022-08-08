@@ -4,6 +4,7 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 import { infoData, coordinates } from "../Atoms/atoms";
 import "../Styles/Info.scss";
 import image from "../Datas/image.jpg";
+import callImage from "../Datas/call.png";
 
 const Info = ({ props }) => {
   const InfoValue = useRecoilState(infoData);
@@ -35,14 +36,15 @@ const Info = ({ props }) => {
       <img className="hospitalImage" alt="hospitalImage" src={image} />
       <div className="InfoList">
         <p className="InfoText">{dutyAddr || address}</p>
-        <p className="InfoText">{dutyName || title}</p>
+        <p className="InfoTextTitle">{dutyName || title}</p>
         <div className="buttonlist">
-          <button className="InfoButton" onClick={goDetail}>
-            자세히
+          <button className="InfoButtonCall" onClick={phoneCall}>
+            <img alt="call" src={callImage} />
           </button>
-          <button className="InfoButton" onClick={phoneCall}>
-            전화 걸기
-          </button>
+          <p className="InfoButton" onClick={goDetail}>
+            자세히 {"\u00A0"}
+            {">"}
+          </p>
         </div>
       </div>
     </div>

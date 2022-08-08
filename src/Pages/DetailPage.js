@@ -1,3 +1,4 @@
+
 import React, { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
@@ -11,6 +12,7 @@ import axios from "axios";
 import AidInfo from "../Components/AidInfo";
 
 const DetailPage = () => {
+
   const { address, symptom } = useRecoilValue(selectData);
   const navigate = useNavigate();
   const [data,setData] = useState([]); 
@@ -46,6 +48,7 @@ const DetailPage = () => {
   },[symptom]);
 
 
+
   return (
     <div>
       <Title name="응급실 찾기" />
@@ -54,9 +57,22 @@ const DetailPage = () => {
         {address && <Select select={address} />}
         {symptom && <Select select={symptom} />}
       </div>
-      <DetailInfo />
-      <p className="chocieText">추천 최단 경로</p>
-      <LoadRoute />
+      {!modal && <DetailInfo />}
+      {!modal && <p className="chocieText">추천 최단 경로</p>}
+      {!modal && <LoadRoute name="TestLocation" />}
+
+      {!modal && (
+        <button className="ModalButton" onClick={OpenMap}>
+          지도에서 보기
+        </button>
+      )}
+
+      {modal && <LoadRoute name="TestLocation1" />}
+      {modal && (
+        <button className="ModalButton" onClick={CloseMap}>
+          화면으로 보기
+        </button>
+      )}
       <button className="LastButton" onClick={goFirstAid}>
         응급 조치 정보
       </button>
