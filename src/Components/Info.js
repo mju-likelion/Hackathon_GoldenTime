@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { infoData, coordinates } from "../Atoms/atoms";
 import "../Styles/Info.scss";
-import image from "../Datas/image.jpg";
 import callImage from "../Datas/call.png";
 
 const Info = ({ props, url }) => {
@@ -14,7 +13,9 @@ const Info = ({ props, url }) => {
   const { address, callNumber, title, y, x } = InfoValue[0]; //병원 객체
   const image = url ? url : InfoValue[0].image; //이미지는 따로 관리해줘야 리스트가 관리됨
   const { dutyAddr, dutyName, dutyTel3, wgs84Lat, wgs84Lon } = props; // 리스트 페이지를 위한 props형태 병원 객체
+
   const navigate = useNavigate();
+  //렌더링이 너무 많이 되는데..
   const goDetail = () => {
     setInfoValue({
       address: dutyAddr || address,
@@ -30,7 +31,7 @@ const Info = ({ props, url }) => {
   };
   const phoneCall = () => {
     window.location.href = dutyTel3 ? "tel:" + dutyTel3 : "tel:" + callNumber;
-    //그냥 a 태그로 하는게 속도는 더 빠름 ++ 크롬 로그인 양쪽에서,,, 전화번호로 로그인 해야되네
+    //전화번호로 로그인 되어야 디바이스 번호 연결
   };
 
   return (
@@ -53,4 +54,4 @@ const Info = ({ props, url }) => {
   );
 };
 
-export default Info;
+export default React.memo(Info);

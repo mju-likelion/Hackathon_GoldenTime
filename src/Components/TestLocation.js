@@ -1,7 +1,7 @@
 /*global kakao*/
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { useSetRecoilState } from "recoil";
-import "../Styles/TestLocation.scss";
+import "../Styles/Info.scss";
 import { coordinates, infoData } from "../Atoms/atoms";
 import marker from "../Datas/marker.png";
 
@@ -14,7 +14,7 @@ const TestLocation = ({ data, name }) => {
 
   const setCoordinates = useSetRecoilState(coordinates); //마커 이벤트가 형제 컴포넌트 이므로 전역 상태 관리를 통한 데이터 유지
   const setInfoValue = useSetRecoilState(infoData);
-  console.log("완성테스트");
+
   useEffect(() => {
     const getLocation = () => {
       if (navigator.geolocation) {
@@ -23,7 +23,7 @@ const TestLocation = ({ data, name }) => {
           function (position) {
             setMyposx(position.coords.longitude);
             setMyposy(position.coords.latitude);
-            getCoordinate(); //그냥 콜백으로 때려버리면 ?
+            getCoordinate(); //콜백
           },
           function (error) {
             console.error(error);
@@ -36,7 +36,6 @@ const TestLocation = ({ data, name }) => {
         );
       } else {
         alert("GPS를 지원하지 않습니다");
-        //이거 gps 요청 안하면 현재 위치 임의로 추가 해야되나?
       }
     };
 
@@ -52,7 +51,7 @@ const TestLocation = ({ data, name }) => {
           level: 7,
         };
 
-        const map = new kakao.maps.Map(container, mapOption); //그래서 맵을 만들고
+        const map = new kakao.maps.Map(container, mapOption);
 
         const markerPoints = [];
 
@@ -60,7 +59,7 @@ const TestLocation = ({ data, name }) => {
           const { dutyAddr, dutyName, dutyTel3, wgs84Lat, wgs84Lon, image } =
             data[i];
           markerPoints.push({
-            content: `<div>${dutyName}</div>`, // 이건 하드 코딩이긴한데, 서버랑 통신 열리면 반복문 돌려서 해당 형식 대로 다 리스트에 넣으면 유지 관리 가능 <image src =${image}/>
+            content: `<div>${dutyName}</div>`,
             value: {
               myposy: myposy,
               myposx: myposx,
@@ -69,12 +68,12 @@ const TestLocation = ({ data, name }) => {
               address: dutyAddr,
               title: dutyName,
               callNumber: dutyTel3,
-              image: image, //이거 쓸지 안쓸지 나중에 고려
+              image: image,
             },
-            latlng: new kakao.maps.LatLng(wgs84Lat, wgs84Lon), //이거 굳이 현재 좌표를 보여줄 필요가 있을까 ? 이거 나중에 의논 해보고
+            latlng: new kakao.maps.LatLng(wgs84Lat, wgs84Lon),
           });
         }
-        setInfoValue(markerPoints[0].value);
+        //setInfoValue(markerPoints[0].value); -> 이거 공유하고 삭제하고
 
         const markerSrc = marker;
         const markerSize = new kakao.maps.Size(48, 48);
@@ -87,8 +86,8 @@ const TestLocation = ({ data, name }) => {
         );
         for (let i = 0; i < markerPoints.length; i++) {
           let marker = new kakao.maps.Marker({
-            map: map, // 마커를 표시할 지도
-            position: markerPoints[i].latlng, //마커 표시 위치
+            map: map,
+            position: markerPoints[i].latlng,
             image: markerImage,
           });
           kakao.maps.event.addListener(marker, "click", function () {
@@ -105,7 +104,7 @@ const TestLocation = ({ data, name }) => {
         }
       } else {
         alert("죄송합니다 현재 입력하신 데이터에 부응하는 정보가 없습니다.");
-        window.location.replace("/"); //일단 데이터 없으면 새로고침
+        window.location.replace("/");
       }
     };
 
@@ -116,10 +115,9 @@ const TestLocation = ({ data, name }) => {
       myposy: myposy,
       myposx: myposx,
     });
-    //이거 좌표 계산하는거 싱크 맞춰야됌
 
     getLocation();
-  }); //애초에 props로 넘기니까, 이제 의존성 부여가 필요 x -> 그럼 useEffect 사용 의미가 있나 ?
+  }, [x, myposx, data]); //의존성 부여로 인한 재렌더링 통제
 
   return <div id="map" className={name}></div>;
 };

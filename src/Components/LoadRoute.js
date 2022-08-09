@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import "../Styles/TestLocation.scss";
+import "../Styles/Info.scss";
 import { coordinates, details, infoData } from "../Atoms/atoms";
 
 //받아야 되는 값들이 병원 상세 정보, 사용자 위치 -> 서버랑 통신할 때 recoil로 관리 하면 될 듯

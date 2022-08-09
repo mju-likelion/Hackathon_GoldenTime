@@ -42,14 +42,6 @@
     overflow: auto;
 }
 
-// .DetailInfoList{
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     width: 100%;
-//     height: 100%;
-    
-// }
 
 .InfoText {
     width: 100%;
@@ -115,4 +107,156 @@
     color: red;
     font-weight: bold;
     text-align: center;
+}
+
+
+.AiFillAlert{
+    margin: 0;
+    min-width: 0;
+    padding: 8px 8px;
+    font-size: inherit;
+    border-radius: 20px;
+    color: inherit;
+    cursor: pointer;
+    background-color: #3385ff;
+}
+
+.DropBoxWrapper {
+    display: flex;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    flex: 1;
+    margin-top: 10px;
+    justify-content: space-between;
+    
+  }
+  .LastButton {
+      
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #3385FF;
+    border-radius: 20px;
+    border-color: #3385FF;
+    width: 80%;
+    color: white;
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.ModalButton {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border-radius: 20px;
+    border-color: #3385FF;
+    width: 80%;
+    color: #000000;
+    padding: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.Link{
+    text-decoration: none;
+}
+
+.Select {
+    margin: 0;
+    min-width: 0;
+    display: flex;
+    width: 25%;
+    padding: 5px 5px;
+    font-size: 14px;
+    line-height: inherit;
+    border: 1px solid;
+    border-radius: 20px;
+    color: #7c7c7c;
+    text-align: center;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:focus {
+        border-color: 3385ff;
+    }
+}
+
+.chocieText {
+    width: 80%;
+    margin: 20px auto 0 auto;
+    display: flex;
+    font-size: large;
+    font-weight: bold;
+    justify-content: flex-start;
+    align-self: center;
+}
+
+
+.mainSelectList {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-start;
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.mainSelect {
+    background-color: white;
+    border-radius: 20px;
+    border-color: #3385ff;
+    border: 1px solid;
+    width: 18%;
+    color: #3385ff;
+    text-align: center;
+    margin-right: 10px;
+    padding: 7px;
+    font-size: small;
+}
+
+.TestLocation {
+    width: 80%;
+    height:280px;
+    margin-left: auto;
+    margin-right: auto;
+    flex: 1;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+
+.TestLocation1 {
+    width: 100vw;
+    height:75vh;
+    // margin-left: auto;
+    // margin-right: auto;
+    // flex: 1;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+
+.map{
+    //이건 어디서 나오는거지 
+    width: 80%;
+    height:300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Title{
+    text-decoration: underline; 
+    text-underline-position:under;
+    text-decoration-color: #3385ff;
+    text-decoration-thickness:3px ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    margin-bottom: 30px;
+    width: 80%; 
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
 }
