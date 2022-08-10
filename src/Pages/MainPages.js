@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
-import { AiFillAlert } from "react-icons/ai";
+import { AiOutlineAlert } from "react-icons/ai";
 import axios from "axios";
 import { useSetRecoilState, useRecoilState } from "recoil";
 import DropBox from "../Components/DropBox";
@@ -80,23 +80,24 @@ const MainPages = () => {
   }, [address, symptom]);
 
   return (
-    <div className="app">
-      <Title name="응급실 찾기" />
-      {!modal && (
-        <div className="DropBoxWrapper">
-          <DropBox options={CITY} handleChange={handleAddress} />
-          <DropBox options={next} handleChange={handleAddress} />
-          <DropBox options={SYMPTOM} handleChange={handleSymptom} />
-          <AiFillAlert className="AiFillAlert" onClick={onSubmit} />
+    <div className="page">
+      <div className="titleBox">
+        <Title name="응급실 찾기" />
+        {!modal && (
+          <div className="DropBoxWrapper">
+            <DropBox options={CITY} handleChange={handleAddress} />
+            <DropBox options={next} handleChange={handleAddress} />
+            <DropBox options={SYMPTOM} handleChange={handleSymptom} />
+            <AiOutlineAlert className="AiFillAlert" onClick={onSubmit} />
+          </div>
+        )}
+        {!modal && <p className="chocieText">검색 결과</p>}
+
+        <div className="mainSelectList">
+          {address && <Select select={address} />}
+          {symptom && <Select select={symptom} />}
         </div>
-      )}
-      {!modal && <p className="chocieText">검색 결과</p>}
-
-      <div className="mainSelectList">
-        {address && <Select select={address} />}
-        {symptom && <Select select={symptom} />}
       </div>
-
       {!modal && hospitalInfoModal && <Info props={dummy} />}
       {loading && !modal && <TestLocation data={data} name="TestLocation" />}
       {loading && !modal && (

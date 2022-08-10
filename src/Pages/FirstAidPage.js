@@ -13,22 +13,23 @@ const FirstAidPage = () => {
   const goMain = () => {
     navigate("/");
   };
-  
+
   const { address, symptom } = useRecoilValue(selectData);
 
   return (
-    <div>
-      <Title name="응급 조치 정보" />
-      <p className="chocieText">검색 결과</p>
-      <div className="mainSelectList">
-        {address && <Select select={address} />}
-        {symptom && <Select select={symptom} />}
+    <div className="page">
+      <div className="titleBox">
+        <Title name="응급 조치 정보" />
+        <p className="chocieText">검색 결과</p>
+        <div className="mainSelectList">
+          {address && <Select select={address} />}
+          {symptom && <Select select={symptom} />}
+        </div>
       </div>
       <p className="chocieText">응급 조치</p>
       <AidInfo />
       <p className="chocieText">유의 사항</p>
-      <Notice  />
-
+      <Notice />
       <button className="LastButton" onClick={goMain}>
         응급실 검색 페이지로 돌아가기
       </button>

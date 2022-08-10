@@ -8,7 +8,7 @@ const AidInfo = () => {
 
   const { firstAid } = recoilValue;
   return (
-    <div className="Info">
+    <div className="aidInfo">
       {/* <img className="hospitalImage"  alt="AidInfoImage" src={image} */}
       <div className="InfoList">
         <p className="InfoText">{firstAid}</p>

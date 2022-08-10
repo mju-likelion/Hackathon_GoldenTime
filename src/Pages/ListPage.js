@@ -13,11 +13,13 @@ const ListPage = () => {
   console.log(dataList);
   const { address, symptom } = useRecoilValue(selectData);
   return (
-    <div>
-      <Title name="응급실 리스트" />
-      <div className="mainSelectList">
-        {address && <Select select={address} />}
-        {symptom && <Select select={symptom} />}
+    <div className="listpage">
+      <div className="titleBox">
+        <Title name="응급실 리스트" />
+        <div className="mainSelectList">
+          {address && <Select select={address} />}
+          {symptom && <Select select={symptom} />}
+        </div>
       </div>
       {dataList?.map((data) => (
         <Info key={data.dutyAddr} props={data} url={data.image} />
