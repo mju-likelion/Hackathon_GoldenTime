@@ -1,5 +1,5 @@
 import React from "react";
-import "../Styles/Select.scss";
+import "../Styles/Info.scss";
 
 const Select = ({ select }) => {
   return <div className="mainSelect">{select}</div>;

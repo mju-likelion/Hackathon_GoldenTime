@@ -1,27 +1,66 @@
+.page {
+    background-color: #e7ecf2;
+    height: 100vh;
+}
+
+.listpage {
+    background-color: #e7ecf2;
+}
+
+
+.titleBox {
+    background-color: #ffffff;
+    border-radius: 0px 0px 20px 20px;
+    box-shadow: 0 1px 0 0 grey;
+    //box-shadow: blur-radius;
+}
+
+
 .Info {
     width: 80%;
     height: 200px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    margin-top: 10px;
+    margin-top: 15px;
     border: 1px solid;
     border-radius: 20px;
-    border-color: #808080;
+    border-color: white;
+    background-color: white;
+    overflow: auto;
 }
 
-.DetailInfo{
+.aidInfo {
     width: 80%;
-    height: 250px;
+    height: 230px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    margin-top: 10px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    border: 1px solid;
+    border-radius: 20px;
+    border-color: #808080;
+    background-color: white;
+    overflow: auto;
+}
+
+
+.DetailInfo {
+    background-color: white;
+    width: 80%;
+    height: 220px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    margin-top: 15px;
     border: 1px solid;
     border-radius: 20px;
     border-color: #3385ff;
+    overflow: auto;
 }
-.AidInfo{
+
+.AidInfo {
     width: 80%;
     height: 240px;
     margin-left: auto;
@@ -31,8 +70,10 @@
     border: 1px solid;
     border-radius: 20px;
     border-color: #3385ff;
+    overflow: auto;
 }
-.InfoList{
+
+.InfoList {
     margin-top: 5px;
     display: flex;
     align-items: center;
@@ -42,14 +83,6 @@
     overflow: auto;
 }
 
-// .DetailInfoList{
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     width: 100%;
-//     height: 100%;
-    
-// }
 
 .InfoText {
     width: 100%;
@@ -66,53 +99,214 @@
     text-align: center;
     margin-bottom: 5px;
 }
-.buttonlist{
+
+.buttonlist {
     display: flex;
     flex-direction: column;
-    margin-top:10px;
-    width: 80%; 
+    margin-top: 10px;
+    width: 80%;
     height: 30%;
     align-items: center;
-    justify-content: space-between;   
+    justify-content: space-between;
 }
-.InfoButton{
-    width:  100%;
+
+.InfoButton {
+    width: 100%;
     font-size: small;
-    font-weight:bold;
+    font-weight: bold;
     color: #525252;
     text-align: center;
     cursor: pointer;
 }
 
-.InfoButtonCall{
+.InfoButtonCall {
     background-color: #00DA3D;
     border-radius: 20px;
     padding: 5px;
     border-color: white;
     border: 1px solid;
-    width:  40%;
+    width: 40%;
     color: white;
     cursor: pointer;
 }
 
 
-.hospitalImage{
+.hospitalImage {
     width: 40%;
     border-radius: 20px;
     padding: 8px;
-   
+
 }
 
-.Text{
+.Text {
     width: 80%;
     text-align: left;
 }
 
-.DetailInfoText{
+.DetailInfoText {
     margin-top: 10px;
     width: 80%;
     font-size: 13px;
     color: red;
     font-weight: bold;
     text-align: center;
+}
+
+
+.AiFillAlert {
+    margin: 0;
+    min-width: 0;
+    padding: 8px 8px;
+    font-size: inherit;
+    border-radius: 20px;
+    color: inherit;
+    cursor: pointer;
+    background-color: #3385ff;
+}
+
+.DropBoxWrapper {
+    display: flex;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    flex: 1;
+    margin-top: 10px;
+    justify-content: space-between;
+
+}
+
+.LastButton {
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #3385FF;
+    border-radius: 20px;
+    border-color: #3385FF;
+    width: 80%;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.ModalButton {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border-radius: 20px;
+    border-color: #3385FF;
+    width: 80%;
+    color: #000000;
+    padding: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.Link {
+    text-decoration: none;
+}
+
+.Select {
+    margin: 0;
+    min-width: 0;
+    display: flex;
+    width: 25%;
+    padding: 5px 5px;
+    font-size: 14px;
+    line-height: inherit;
+    border: 1px solid;
+    border-radius: 20px;
+    color: #7c7c7c;
+    text-align: center;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:focus {
+        border-color: 3385ff;
+    }
+}
+
+.chocieText {
+    color: gray;
+    width: 80%;
+    margin: 15px auto 0 auto;
+    display: flex;
+    font-size: medium;
+    font-weight: bold;
+    justify-content: flex-start;
+    align-self: center;
+}
+
+
+.mainSelectList {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-start;
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 10px;
+}
+
+.mainSelect {
+    background-color: white;
+    border-radius: 20px;
+    border-color: #3385ff;
+    border: 1px solid;
+    width: 18%;
+    color: #3385ff;
+    text-align: center;
+    margin-right: 10px;
+    padding: 7px;
+    font-size: small;
+    margin-bottom: 15px;
+}
+
+.TestLocation {
+    width: 80%;
+    height: 280px;
+    margin-left: auto;
+    margin-right: auto;
+    flex: 1;
+    margin-top: 10px;
+    border-radius: 20px;
+}
+
+.TestLocation1 {
+    width: 100vw;
+    height: 75vh;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+
+.map {
+    // ? 
+    width: 80%;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Title {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 80%;
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+    border: 2px solid;
+    border-radius: 10px;
+    border-color: #3385ff;
+    padding: 6px;
+    box-sizing: border-box;
+
+}
+
+* {
+    font-family: "apple";
 }

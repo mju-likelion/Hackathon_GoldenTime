@@ -39,26 +39,27 @@ const DetailPage = () => {
       console.log(data);
       navigate("/aid");
       setData(data);
-      SelectSymtom({ 
+      SelectSymtom({
         notice: data.data[0].notice,
         firstAid: data.data[0].firstAid,
       });
-      
     });
   });
 
   const goFirstAid = useCallback(() => {
     getsymtomdata();
-    //SelectSymtom({}); 기껏 데이터 받아 올 때 셋팅했는데 해당 리코일 값을 다시 초기화 해버리면 의미가 없어용 
+    //SelectSymtom({}); 기껏 데이터 받아 올 때 셋팅했는데 해당 리코일 값을 다시 초기화 해버리면 의미가 없어용
   }, [symptom]);
 
   return (
-    <div>
-      <Title name="응급실 찾기" />
-      <p className="chocieText">검색 결과</p>
-      <div className="mainSelectList">
-        {address && <Select select={address} />}
-        {symptom && <Select select={symptom} />}
+    <div className="page">
+      <div className="titleBox">
+        <Title name="응급실 찾기" />
+        <p className="chocieText">검색 결과</p>
+        <div className="mainSelectList">
+          {address && <Select select={address} />}
+          {symptom && <Select select={symptom} />}
+        </div>
       </div>
       {!modal && <DetailInfo />}
       {!modal && <p className="chocieText">추천 최단 경로</p>}
