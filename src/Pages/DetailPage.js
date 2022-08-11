@@ -31,7 +31,7 @@ const DetailPage = () => {
 
     const option = {
       method: "GET",
-      url: `http://15.164.159.158:3000/api/information/${symptom}`,
+      url: `https://hack4goldentime.link/api/information/${symptom}`,
       parmas: sendsymtomdata,
     };
 
