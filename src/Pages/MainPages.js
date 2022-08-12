@@ -44,7 +44,8 @@ const MainPages = () => {
 
     const option = {
       method: "GET",
-      url: `https://hack4goldentime.link/api/hospital/inquire?`,
+
+      url: "https://hack4goldentime.link/api/hospital/inquire?",
       params: sendData,
     };
 
