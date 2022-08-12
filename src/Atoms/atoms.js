@@ -17,9 +17,10 @@ export const details = atom({
 export const aidInfos = atom({
   key: "aidinfo",
   default: {                    //아직 서버에서 이미지를 못받아서 일단은 배제 시켰습니다.
-    //image:image,
     notice: "",
-    firstAid: ""
+    firstAid: "",
+    firstImage: "",             //  응급조치 이미지 구조?
+    noticeImage: ""             //  유의사항 이미지 구조?
   },
 });
 //응급정보

@@ -5,14 +5,16 @@ import "../Styles/Info.scss";
 
 const Notice = () => {
   const recoilValue = useRecoilValue(aidInfos);
+  const { notice, noticeImage } = recoilValue;
 
-  const { notice } = recoilValue;
-  //이제 이미지 연동 ㄱㄱ
+  const noticecommma  = notice.split(".");
+  const noticeNew = noticecommma.map ( (noticecommmas,index) => <li key = {index}>{noticecommmas}</li>);    // 점 찍힌 곳마다 줄 바꿈
+
   return (
     <div className="aidInfo">
-      <img className="hospitalImage" /* alt="AidInfoImage" src={image}*/ />
+      <img className="hospitalImage" alt="AidInfoImage" src={noticeImage} />
       <div className="InfoList">
-        <p className="InfoText">{notice}</p>
+        <p className="InfoText">{noticeNew}</p>
       </div>
     </div>
   );

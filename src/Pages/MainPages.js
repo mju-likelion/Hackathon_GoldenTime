@@ -44,12 +44,13 @@ const MainPages = () => {
 
     const option = {
       method: "GET",
-      url: "http://15.164.159.158:3000/api/hospital/inquire?",
+      url: `https://hack4goldentime.link/api/hospital/inquire?`,
       params: sendData,
     };
 
     axios(option).then(({ data }) => {
       setData(data);
+      console.log(data);
       setLoading(true);
     });
   }, [address, symptom]);
