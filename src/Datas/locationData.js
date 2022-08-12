@@ -2,7 +2,6 @@ export const CITY = [{ value: "시" }, { value: "서울특별시" }];
 
 export const SEOUL = [
   { value: "구" },
-  { value: "미입력" },
   { value: "강남구" },
   { value: "강동구" },
   { value: "강북구" },
@@ -32,22 +31,20 @@ export const SEOUL = [
 
 export const SYMPTOM = [
   { value: "증상" },
-  { value: "수족 마비" },
   { value: "의식장애" },
+  { value: "수족마비" },
   { value: "뇌경색" },
   { value: "심근경색" },
-  { value: "복부 내/외상" },
+  { value: "복부창상" },
   { value: "손가락절단" },
   { value: "개에게물림" },
-  { value: "뇌출혈" },
-  { value: "응급내시경" },
+  { value: "신체절단" },
+  { value: "위경련" },
   { value: "혈액투석" },
   { value: "신장투석" },
   { value: "조산" },
   { value: "과호흡" },
-  { value: "열성 경련" },
-  { value: "소아 머리손상" },
-  { value: "소아 알레르기" },
-  { value: "소아 구토" },
-  { value: "미입력" },
+  { value: "열성경련" },
+  { value: "소아구토" },
+  { value: "화상" },
 ];
