@@ -42,13 +42,14 @@ const DetailPage = () => {
       SelectSymtom({
         notice: data.data[0].notice,
         firstAid: data.data[0].firstAid,
+        firstImage: data.data[0].firstImage,   //응급처치 데이터
+        noticeImage: data.data[0].noticeImage, // 유의사항 데이터
       });
     });
   });
 
   const goFirstAid = useCallback(() => {
     getsymtomdata();
-    //SelectSymtom({}); 기껏 데이터 받아 올 때 셋팅했는데 해당 리코일 값을 다시 초기화 해버리면 의미가 없어용
   }, [symptom]);
 
   return (
