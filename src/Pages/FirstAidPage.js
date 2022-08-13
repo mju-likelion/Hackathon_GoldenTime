@@ -15,7 +15,7 @@ const FirstAidPage = () => {
   };
 
   const { address, symptom } = useRecoilValue(selectData);
-
+  //이거 예외처리 해야됨
   return (
     <div className="page">
       <div className="titleBox">
