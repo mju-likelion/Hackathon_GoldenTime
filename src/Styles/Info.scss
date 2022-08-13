@@ -1,20 +1,54 @@
-//웹에서는 아예 양쪽 자르는 식으로 작업해도 ㄱㅊ
 
-.page {
-    background-color: #e7ecf2;
-    height: 100vh;
+@media (min-width: 800px) {
+    .TestLocation1 {
+        width: 100%;
+        height: 65vh;
+        margin-top: 20px;
+        border-radius: 20px;
+    }
+
+    .transitions-wrapper {
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        height: 800px;
+        background-color: #e7ecf2;
+    }
+
 }
 
-.listpage {
-    background-color: #e7ecf2;
+@media (max-width: 800px) {
+    .TestLocation1 {
+        width: 100vw;
+        height: 75vh;
+        margin-top: 20px;
+        border-radius: 20px;
+    }
+    .transitions-wrapper {
+        background-color: #e7ecf2;
+    }
+}
+.dummy{
+    width: 100%;
+    height:20px;
+    background-color: white;
 }
 
+// .page {
+//     background-color: #e7ecf2;
+//     height: 100vh;
+// }
+
+// .listpage {
+//     background-color: #e7ecf2;
+// }
+
+//날 밝으면 한번 확인해보고, 이상 없으면 삭제
 
 .titleBox {
     background-color: #ffffff;
     border-radius: 0px 0px 20px 20px;
     box-shadow: 0 1px 0 0 grey;
-    //box-shadow: blur-radius;
 }
 
 
@@ -192,7 +226,6 @@
     color: white;
     padding: 10px;
     margin-top: 10px;
-    margin-bottom: 10px;
     cursor: pointer;
 }
 
@@ -280,15 +313,8 @@
     border-radius: 20px;
 }
 
-.TestLocation1 {
-    width: 100vw;
-    height: 75vh;
-    margin-top: 20px;
-    border-radius: 20px;
-}
 
 .map {
-    // ? 
     width: 80%;
     height: 300px;
     margin-left: auto;
@@ -298,7 +324,7 @@
 .Title {
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
+    //margin-top: 20px;
     margin-bottom: 20px;
     width: 80%;
     text-align: center;

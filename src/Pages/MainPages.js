@@ -82,6 +82,7 @@ const MainPages = () => {
 
   return (
     <div className="page">
+      <div className="dummy" />
       <div className="titleBox">
         <Title name="응급실 찾기" />
         {!modal && (

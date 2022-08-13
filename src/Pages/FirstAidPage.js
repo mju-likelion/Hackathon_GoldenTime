@@ -18,6 +18,7 @@ const FirstAidPage = () => {
   //이거 예외처리 해야됨
   return (
     <div className="page">
+      <div className="dummy" />
       <div className="titleBox">
         <Title name="응급 조치 정보" />
         <p className="chocieText">검색 결과</p>

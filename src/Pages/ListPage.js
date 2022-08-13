@@ -14,6 +14,7 @@ const ListPage = () => {
   const { address, symptom } = useRecoilValue(selectData);
   return (
     <div className="listpage">
+      <div className="dummy" />
       <div className="titleBox">
         <Title name="응급실 리스트" />
         <div className="mainSelectList">

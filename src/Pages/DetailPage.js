@@ -42,7 +42,7 @@ const DetailPage = () => {
       SelectSymtom({
         notice: data.data[0].notice,
         firstAid: data.data[0].firstAid,
-        firstImage: data.data[0].firstImage,   //응급처치 데이터
+        firstImage: data.data[0].firstImage, //응급처치 데이터
         noticeImage: data.data[0].noticeImage, // 유의사항 데이터
       });
     });
@@ -54,6 +54,7 @@ const DetailPage = () => {
 
   return (
     <div className="page">
+      <div className="dummy" />
       <div className="titleBox">
         <Title name="응급실 찾기" />
         <p className="chocieText">검색 결과</p>
@@ -83,7 +84,6 @@ const DetailPage = () => {
       </button>
     </div>
   );
-  //상세 정보에서 응급 조치 보도록 해야됨
 };
 
 export default DetailPage;
