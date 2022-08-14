@@ -22,8 +22,8 @@ const DetailInfo = () => {
     <div className="DetailInfo">
       <img className="hospitalImage" alt="hospitalImage" src={image} />
       <div className="InfoList">
-        <p className="InfoText">{title}</p>
-        <p className="InfoText">{address}</p>
+      <p className="InfoText">{address}</p>
+        <p className="InfoTextTitle">{title}</p>
         <div className="buttonlist">
           <button className="InfoButtonCall" onClick={phoneCall}>
             <img alt="call" src={callImage} />

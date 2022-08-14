@@ -6,7 +6,7 @@ import { useSetRecoilState, useRecoilState } from "recoil";
 import DropBox from "../Components/DropBox";
 import Title from "../Components/Title";
 import Info from "../Components/Info";
-import TestLocation from "../Components/TestLocation";
+import MapBox from "../Components/MapBox";
 import Select from "../Components/Select";
 import { CITY, SEOUL, SYMPTOM } from "../Datas/locationData.js";
 import { selectData, infoData } from "../Atoms/atoms";
@@ -50,7 +50,6 @@ const MainPages = () => {
 
     axios(option).then(({ data }) => {
       setData(data);
-      console.log(data);
       setLoading(true);
     });
   }, [address, symptom]);
@@ -101,14 +100,14 @@ const MainPages = () => {
         </div>
       </div>
       {!modal && hospitalInfoModal && <Info props={dummy} />}
-      {loading && !modal && <TestLocation data={data} name="TestLocation" />}
+      {loading && !modal && <MapBox data={data} name="minimum" />}
       {loading && !modal && (
         <button className="ModalButton" onClick={OpenMap}>
           지도에서 보기
         </button>
       )}
 
-      {modal && <TestLocation data={data} name="TestLocation1" />}
+      {modal && <MapBox data={data} name="maximum" />}
       {modal && (
         <button className="ModalButton" onClick={CloseMap}>
           화면으로 보기

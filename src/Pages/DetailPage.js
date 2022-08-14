@@ -1,14 +1,13 @@
 import React, { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import Title from "../Components/Title";
 import DetailInfo from "../Components/DetailInfo";
 import LoadRoute from "../Components/LoadRoute";
 import Select from "../Components/Select";
-import { aidInfos, coordinates, selectData } from "../Atoms/atoms";
+import { aidInfos, selectData } from "../Atoms/atoms";
 import "../Styles/Info.scss";
 import axios from "axios";
-import AidInfo from "../Components/AidInfo";
 
 const DetailPage = () => {
   const [modal, setModal] = useState(false);
@@ -36,7 +35,6 @@ const DetailPage = () => {
     };
 
     axios(option).then(({ data }) => {
-      console.log(data);
       navigate("/aid");
       setData(data);
       SelectSymtom({
@@ -49,6 +47,10 @@ const DetailPage = () => {
   });
 
   const goFirstAid = useCallback(() => {
+    if(!symptom){
+      alert("선택된 증상이 없습니다.");
+      return;
+    }
     getsymtomdata();
   }, [symptom]);
 

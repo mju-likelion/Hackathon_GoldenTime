@@ -5,7 +5,7 @@ import "../Styles/Info.scss";
 import { coordinates, infoData } from "../Atoms/atoms";
 import marker from "../Datas/marker.png";
 
-const TestLocation = ({ data, name }) => {
+const MapBox = ({ data, name }) => {
   const [x, setX] = useState(0); //목적지에 해당하는 x,y
   const [y, setY] = useState(0);
 
@@ -73,8 +73,6 @@ const TestLocation = ({ data, name }) => {
             latlng: new kakao.maps.LatLng(wgs84Lat, wgs84Lon),
           });
         }
-        //setInfoValue(markerPoints[0].value); -> 이거 공유하고 삭제하고
-
         const markerSrc = marker;
         const markerSize = new kakao.maps.Size(48, 48);
         const markerOption = { offset: new kakao.maps.Point(27, 58) };
@@ -119,6 +117,6 @@ const TestLocation = ({ data, name }) => {
     getLocation();
   }, [x, myposx, data]); //의존성 부여로 인한 재렌더링 통제
 
-  return <div id="map" className={name}></div>;
+  return <div id="map" className={(myposx&&x)?name:'wait'}></div>;
 };
-export default TestLocation;
+export default MapBox;

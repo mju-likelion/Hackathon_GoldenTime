@@ -15,7 +15,6 @@ const Info = ({ props, url }) => {
   const { dutyAddr, dutyName, dutyTel3, wgs84Lat, wgs84Lon } = props; // 리스트 페이지를 위한 props형태 병원 객체
 
   const navigate = useNavigate();
-  //렌더링이 너무 많이 되는데..
   const goDetail = () => {
     setInfoValue({
       address: dutyAddr || address,
