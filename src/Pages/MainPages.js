@@ -22,6 +22,7 @@ const MainPages = () => {
   const setSelectData = useSetRecoilState(selectData); // 전역값을 통한 선택값 렌더링
   const InfoValue = useRecoilState(infoData);
   const hospitalInfoModal = InfoValue[0].address; //마커 클릭이벤트 모달 연동을 위함
+  const getUrl = process.env.REACT_APP_HOSPITAL_URL;
 
   const dummy = {
     dutyAddr: "",
@@ -44,7 +45,7 @@ const MainPages = () => {
 
     const option = {
       method: "GET",
-      url: "https://hack4goldentime.link/api/hospital/inquire?",
+      url: `${getUrl}`,
       params: sendData,
     };
 

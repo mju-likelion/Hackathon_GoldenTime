@@ -5,11 +5,10 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import "../Styles/Info.scss";
 import { coordinates, details, infoData } from "../Atoms/atoms";
 
-
 const LoadRoute = ({ name }) => {
   const API_KEY = process.env.REACT_APP_ROUTE_API_KEY;
   const routex = []; //두 위치에 따른 경로를 위한 좌표들의 배열
-  const routey = []; 
+  const routey = [];
   const coordinateValue = useRecoilValue(infoData);
   const setDetail = useSetRecoilState(details);
   const { myposx, myposy, x, y } = coordinateValue;
@@ -18,7 +17,7 @@ const LoadRoute = ({ name }) => {
   useEffect(() => {
     if (myposx == undefined) {
       alert("잘못된 경로입니다");
-      window.location.replace("/"); 
+      window.location.replace("/");
     }
 
     if (myposx === 0 || x === 0) {

@@ -15,6 +15,7 @@ const DetailPage = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const SelectSymtom = useSetRecoilState(aidInfos);
+  const getUrl = process.env.REACT_APP_HOSPITAL_URL;
 
   const OpenMap = () => {
     setModal(true);
@@ -30,7 +31,7 @@ const DetailPage = () => {
 
     const option = {
       method: "GET",
-      url: `https://hack4goldentime.link/api/information/${symptom}`,
+      url: `${getUrl}${symptom}`,
       parmas: sendsymtomdata,
     };
 
@@ -47,7 +48,7 @@ const DetailPage = () => {
   });
 
   const goFirstAid = useCallback(() => {
-    if(!symptom){
+    if (!symptom) {
       alert("선택된 증상이 없습니다.");
       return;
     }
@@ -67,7 +68,7 @@ const DetailPage = () => {
       </div>
       {!modal && <DetailInfo />}
       {!modal && <p className="chocieText">추천 최단 경로</p>}
-      {!modal && <LoadRoute name="TestLocation" />}
+      {!modal && <LoadRoute name="minimum" />}
 
       {!modal && (
         <button className="ModalButton" onClick={OpenMap}>
@@ -75,7 +76,7 @@ const DetailPage = () => {
         </button>
       )}
 
-      {modal && <LoadRoute name="TestLocation1" />}
+      {modal && <LoadRoute name="maximum" />}
       {modal && (
         <button className="ModalButton" onClick={CloseMap}>
           화면으로 보기
