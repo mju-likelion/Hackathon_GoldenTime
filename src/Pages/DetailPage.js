@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import Title from "../Components/Title";
@@ -13,9 +13,8 @@ const DetailPage = () => {
   const [modal, setModal] = useState(false);
   const { address, symptom } = useRecoilValue(selectData);
   const navigate = useNavigate();
-  const [data, setData] = useState([]);
   const SelectSymtom = useSetRecoilState(aidInfos);
-  const getUrl = process.env.REACT_APP_HOSPITAL_URL;
+  const getUrl = process.env.REACT_APP_AIDINFO_URL;
 
   const OpenMap = () => {
     setModal(true);
@@ -24,7 +23,7 @@ const DetailPage = () => {
     setModal(false);
   };
 
-  const getsymtomdata = useCallback(() => {
+  const getsymtomdata = () => {
     const sendsymtomdata = {
       symptom: symptom,
     };
@@ -36,24 +35,23 @@ const DetailPage = () => {
     };
 
     axios(option).then(({ data }) => {
-      navigate("/aid");
-      setData(data);
       SelectSymtom({
         notice: data.data[0].notice,
         firstAid: data.data[0].firstAid,
         firstImage: data.data[0].firstImage, //응급처치 데이터
         noticeImage: data.data[0].noticeImage, // 유의사항 데이터
       });
+      navigate("/aid");
     });
-  });
+  };
 
-  const goFirstAid = useCallback(() => {
+  const goFirstAid = () => {
     if (!symptom) {
       alert("선택된 증상이 없습니다.");
       return;
     }
     getsymtomdata();
-  }, [symptom]);
+  };
 
   return (
     <div className="page">

@@ -53,32 +53,29 @@ const MainPages = () => {
       setData(data);
       setLoading(true);
     });
-  }, [address, symptom]);
+  }, [address, symptom, getUrl]);
 
-  const handleAddress = useCallback(
-    (e) => {
-      const eventValue = e.target.value;
-      if (eventValue === "서울특별시") {
-        setNext(SEOUL);
-        return; //서버랑 통신할 때 시는 필요 x
-      }
-      setAddress(eventValue);
-    },
-    [address]
-  );
+  const handleAddress = (e) => {
+    const eventValue = e.target.value;
+    if (eventValue === "서울특별시") {
+      setNext(SEOUL);
+      return; //서버랑 통신할 때 시는 필요 x
+    }
+    setAddress(eventValue);
+  };
 
   const handleSymptom = (e) => {
     const eventValue = e.target.value;
     setSymptom(eventValue);
   };
 
-  const onSubmit = useCallback(() => {
+  const onSubmit = () => {
     getData();
     setSelectData({
       address: address,
       symptom: symptom,
     });
-  }, [address, symptom]);
+  };
 
   return (
     <div className="page">

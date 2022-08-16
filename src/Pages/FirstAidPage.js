@@ -16,7 +16,7 @@ const FirstAidPage = () => {
 
   const { address, symptom } = useRecoilValue(selectData);
 
-  if(!symptom){
+  if (!symptom) {
     alert("잘못된 경로입니다");
     window.location.replace("/");
   }

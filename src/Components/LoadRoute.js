@@ -1,9 +1,9 @@
 /*global kakao*/
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import "../Styles/Info.scss";
-import { coordinates, details, infoData } from "../Atoms/atoms";
+import { details, infoData } from "../Atoms/atoms";
 
 const LoadRoute = ({ name }) => {
   const API_KEY = process.env.REACT_APP_ROUTE_API_KEY;
@@ -15,7 +15,7 @@ const LoadRoute = ({ name }) => {
   console.log(coordinateValue);
 
   useEffect(() => {
-    if (myposx == undefined) {
+    if (myposx === undefined) {
       alert("잘못된 경로입니다");
       window.location.replace("/");
     }
@@ -43,7 +43,7 @@ const LoadRoute = ({ name }) => {
     ];
 
     for (let i = 0; i < markerPoints.length; i++) {
-      let marker = new kakao.maps.Marker({
+      new kakao.maps.Marker({
         map: map,
         position: markerPoints[i].latlng,
       });

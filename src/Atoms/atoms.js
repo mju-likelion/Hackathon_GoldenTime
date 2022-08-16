@@ -15,11 +15,11 @@ export const details = atom({
 //거리
 export const aidInfos = atom({
   key: "aidinfo",
-  default: {                    
+  default: {
     notice: "",
     firstAid: "",
-    firstImage: "",             
-    noticeImage: ""             
+    firstImage: "",
+    noticeImage: "",
   },
 });
 //응급정보
@@ -33,4 +33,3 @@ export const selectData = atom({
   default: {},
 });
 //선택정보
-

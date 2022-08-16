@@ -7,8 +7,10 @@ const Notice = () => {
   const recoilValue = useRecoilValue(aidInfos);
   const { notice, noticeImage } = recoilValue;
 
-  const noticecommma  = notice.split(".");
-  const noticeNew = noticecommma.map ( (noticecommmas,index) => <li key = {index}>{noticecommmas}</li>);    // 점 찍힌 곳마다 줄 바꿈
+  const noticecommma = notice.split(".");
+  const noticeNew = noticecommma.map((noticecommmas, index) => (
+    <li key={index}>{noticecommmas}</li>
+  )); // 점 찍힌 곳마다 줄 바꿈
 
   return (
     <div className="aidInfo">

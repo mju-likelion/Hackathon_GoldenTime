@@ -8,8 +8,6 @@ const AidInfo = () => {
 
   const { firstAid, firstImage } = recoilValue;
 
- 
-
   const firstaidcommma = firstAid.split(".");
   const firstAidNew = firstaidcommma.map((firstaidcommmas, index) => (
     <li key={index}>{firstaidcommmas}</li>

@@ -117,6 +117,6 @@ const MapBox = ({ data, name }) => {
     getLocation();
   }, [x, myposx, data]); //의존성 부여로 인한 재렌더링 통제
 
-  return <div id="map" className={(myposx&&x)?name:'wait'}></div>;
+  return <div id="map" className={myposx && x ? name : "wait"}></div>;
 };
 export default MapBox;
