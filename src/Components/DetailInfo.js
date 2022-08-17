@@ -1,7 +1,6 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import "../Styles/Info.scss";
-import image from "../Datas/image.jpg";
 import { details, infoData } from "../Atoms/atoms";
 import callImage from "../Datas/call.png";
 
