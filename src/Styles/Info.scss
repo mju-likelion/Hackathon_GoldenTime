@@ -43,7 +43,7 @@
 .titleBox {
     background-color: #ffffff;
     border-radius: 0px 0px 20px 20px;
-    box-shadow: 0 1px 0 0 grey;
+    box-shadow: 0 0 6px rgba(112, 112, 112, .1);
 }
 
 
@@ -119,6 +119,14 @@
     margin-bottom: 0px;
 }
 
+.aidInfoText {
+    width: 80%;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 0px;
+}
+
 .InfoTextTitle {
     width: 60%;
     font-size: 15px;
@@ -126,7 +134,9 @@
     text-align: center;
     margin-bottom: 5px;
 }
-
+.point{
+    list-style-position: outside;
+}
 .buttonlist {
     display: flex;
     flex-direction: column;

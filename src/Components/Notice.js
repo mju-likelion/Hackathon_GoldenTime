@@ -16,7 +16,7 @@ const Notice = () => {
     <div className="aidInfo">
       <img className="hospitalImage" alt="AidInfoImage" src={noticeImage} />
       <div className="InfoList">
-        <p className="InfoText">{noticeNew}</p>
+        <p className="aidInfoText"> <ul className="point">{noticeNew}</ul></p>
       </div>
     </div>
   );

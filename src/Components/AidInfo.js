@@ -17,7 +17,7 @@ const AidInfo = () => {
     <div className="aidInfo">
       <img className="hospitalImage" alt="AidInfoImage" src={firstImage}></img>
       <div className="InfoList">
-        <p className="InfoText">{firstAidNew}</p>
+        <p className="aidInfoText"><ul className="point">{firstAidNew}</ul></p>
       </div>
     </div>
   );
