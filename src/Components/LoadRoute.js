@@ -12,7 +12,6 @@ const LoadRoute = ({ name }) => {
   const coordinateValue = useRecoilValue(infoData);
   const setDetail = useSetRecoilState(details);
   const { myposx, myposy, x, y } = coordinateValue;
-  console.log(coordinateValue);
 
   useEffect(() => {
     if (myposx === undefined) {
