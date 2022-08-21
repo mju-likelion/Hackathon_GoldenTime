@@ -1,4 +1,19 @@
 # 해커톤 4조 레파짓  
+## **주요기능**  
+### **위치 및 증상 기반 응급실 정보 렌더링**    
+<img width="80%" src="https://user-images.githubusercontent.com/81761524/185782569-1e4aa492-1b98-4154-87e0-60bbb3ab366d.gif"/>  
+
+### **조건에 부합한 응급실 리스트**     
+<img width="80%" src="https://user-images.githubusercontent.com/81761524/185782622-c255ead4-9c12-499e-8560-1bc338bdf49a.gif"/>    
+
+### **사용 위치부터 선택한 응급실 까지의 경로 추천**       
+<img width="80%" src="https://user-images.githubusercontent.com/81761524/185782711-0ad3b60d-c803-481c-98ac-8f1ffec15f48.gif"/>  
+
+### **해당 응급실에 전화 연결**     
+<img width="80%" src="https://user-images.githubusercontent.com/81761524/185782589-e4eaa0b2-5496-408c-854d-4b1b66ca0870.gif"/>  
+
+
+
 
 ## **Commit convention**  
 
