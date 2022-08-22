@@ -1,4 +1,17 @@
 # 해커톤 4조 레파짓  
+  
+## **실행 방법**  
+```
+-> yarn start  
+-> 환경변수 설정 방법  
+
+.env파일에
+REACT_APP_KAKAOMAP_API_KEY = 카카오 맵 apikey 
+REACT_APP_ROUTE_API_KEY = 카카오 모빌리티 apikey 
+REACT_APP_HOSPITAL_URL = 현재 서버가 비활성화 상태입니다.
+REACT_APP_AIDINFO_URL = 현재 서버가 비활성화 상태입니다.
+```  
+
 ## **주요기능**  
 ### **위치 및 증상 기반 응급실 정보 렌더링**    
 <img width="80%" src="https://user-images.githubusercontent.com/81761524/185782569-1e4aa492-1b98-4154-87e0-60bbb3ab366d.gif"/>  
@@ -45,8 +58,6 @@ Merge : 합병 및 깃 충돌 해결 커밋 메시지
 
 사용 API -> Geo Location, Kakao maps, Kakao mobility  
 
-메인 이슈 -> 서버와의 연동 및 렌더링의 싱크 처리, UI 디자인
-  
 
  
 ## **폴더구조**는 다음과 같습니다.
@@ -63,9 +74,11 @@ src
 │   ├── Info.js
 │   ├── LoadRoute.js
 │   ├── Select.js
-│   ├── TestLocation.js -> 추후 컴포넌트명 수정 계획 중 입니다. 
+│   ├── MapBox.js
+│   ├── Notice.js
 │   └── Title.js
 ├── Datas
+│   ├── call.png
 │   ├── image.jpg
 │   ├── locationData.js
 │   └── marker.png
@@ -74,7 +87,7 @@ src
 │   ├── FirstAidPage.js
 │   ├── ListPage.js
 │   └── MainPages.js
-├──Syltes -> 컴포넌트 관련 scss 파일인데 추후 취합 후에 업데이트 하겠습니다. 
+├──Syltes 
 │   
 └── else
 ``` 
